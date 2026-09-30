@@ -277,7 +277,7 @@
       color: var(--text-muted);
     }
 
-    /* BOUTON AJOUTER DIRECT DANS L'ONGLET */
+    /* BOUTON AJOUTER DANS L'ONGLET */
     .btn-add-tab {
       background: var(--primary-container);
       color: var(--on-primary-container);
@@ -447,7 +447,7 @@
       fill: currentColor;
     }
 
-    /* MODAL DE PUBLICATION & SÉCURITÉ */
+    /* MODAL DE PUBLICATION */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -542,10 +542,6 @@
       font-weight: 600;
     }
   </style>
-
-  <!-- SDK FIREBASE FIRESTORE -->
-  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -602,10 +598,8 @@
       </button>
     </div>
 
-    <!-- FLUX D'ARTICLES SYNCHRONISÉ AVEC FIREBASE -->
-    <section id="articlesContainer" class="articles-feed">
-      <p style="text-align: center; color: var(--text-muted); padding: 30px 0;">Chargement des articles en cours...</p>
-    </section>
+    <!-- FLUX D'ARTICLES -->
+    <section id="articlesContainer" class="articles-feed"></section>
   </main>
 
   <!-- MODAL DE PUBLICATION AVEC CODE SECRET ALPHA -->
@@ -675,10 +669,21 @@
   </div>
 
   <script>
-    // 1. CONFIGURATION OFFICIELLE FIREBASE
-    const firebaseConfig = {
-      apiKey: "AIzaSyC2SYYfdF5_4i8Idu_nu1L0sjNb1HICr3Q",
-      authDomain: "site-actu-pixel.firebaseapp.com",
-      projectId: "site-actu-pixel",
-      storageBucket: "site-actu-pixel.firebasestorage.app",
-      messaging
+    const SECRET_CODE = "Alpha";
+
+    // Articles par défaut
+    const defaultArticles = [
+      {
+        id: "1",
+        category: "devices",
+        tag: "Matériel & Écosystème",
+        title: "Bienvenue sur l'espace Pixel Phones & Watchs",
+        content: "Retrouvez ici les actualités, annonces officielles, comparatifs et retours d'expérience dédiés aux smartphones Pixel et aux montres connectées Pixel Watch de notre communauté.",
+        dateStr: "Dossier matériel"
+      },
+      {
+        id: "2",
+        category: "beta",
+        tag: "Suivi Logiciel",
+        title: "Espace des versions Beta d'Android",
+        content: "Suivi complet des versions trimestrielles (QPR
