@@ -34,8 +34,6 @@
 
       --glow-1: rgba(168, 199, 250, 0.16);
       --glow-2: rgba(124, 172, 248, 0.08);
-      --bg-overlay: rgba(15, 20, 26, 0.85);
-
     }
 
     :root[data-theme="light"] {
@@ -61,7 +59,6 @@
 
       --glow-1: rgba(0, 90, 193, 0.07);
       --glow-2: rgba(77, 144, 254, 0.05);
-      --bg-overlay: rgba(247, 249, 252, 0.85);
     }
 
     * {
@@ -75,26 +72,18 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 100px;
-
-  /* Image de fond avec voile teinté et lueurs combinées */
-  background-image: 
-    radial-gradient(ellipse 65% 45% at 50% -12%, var(--glow-1), transparent 72%),
-    radial-gradient(ellipse 45% 35% at 88% 22%, var(--glow-2), transparent 65%),
-    linear-gradient(var(--bg-overlay), var(--bg-overlay)),
-    url('Mes fichiers/Téléchargements/how-to-watch-made-by-google-2026-the-pixel-events-start-time_snn7.1024.webp'); /* <-- Indique ici le chemin ou l'URL de ton image */
-
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(ellipse 65% 45% at 50% -12%, var(--glow-1), transparent 72%),
+        radial-gradient(ellipse 45% 35% at 88% 22%, var(--glow-2), transparent 65%);
+      background-attachment: fixed;
+      padding-bottom: 100px;
+    }
 
     /* BARRE FLOTTANTE SUPÉRIEURE */
     .top-nav-wrapper {
