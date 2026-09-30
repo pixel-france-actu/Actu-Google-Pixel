@@ -701,7 +701,7 @@
         categoryTitle.textContent = metaInfo[cat].title;
         categoryDesc.textContent = metaInfo[cat].desc;
 
-           if (cat === 'home') {
+               if (cat === 'home') {
       heroBanner.style.display = 'block';
       // Affiche uniquement l'article qui a data-category="home"
       articles.forEach(art => {
@@ -713,17 +713,9 @@
         art.style.display = (art.getAttribute('data-category') === cat) ? 'block' : 'none';
       });
     }
+  });
+});
+</script>
 
-        } else {
-          heroBanner.style.display = 'none';
-          articles.forEach(art => {
-            art.style.display = (art.getAttribute('data-category') === cat) ? 'block' : 'none';
-          });
-        }
-      });
-    });
-  </script>
-</body>
-</html>
 
 
