@@ -8,15 +8,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    /* ============================================================
-       VARIABLES CSS : MATERIAL 3 EXPRESSIVE ORIGINEL
-       ============================================================ */
     :root[data-theme="dark"] {
       --bg-color: #0f141a;
       --text-main: #e2e8f0;
       --text-muted: #94a3b8;
       
-      /* Translucidité verre dépoli douce d'origine (Dark) */
       --nav-bg: rgba(20, 26, 34, 0.65);
       --nav-border: rgba(255, 255, 255, 0.12);
       --nav-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -41,7 +37,6 @@
       --text-main: #191c20;
       --text-muted: #5e6b7c;
       
-      /* Translucidité verre dépoli douce d'origine (Light) */
       --nav-bg: rgba(255, 255, 255, 0.72);
       --nav-border: rgba(0, 0, 0, 0.08);
       --nav-shadow: 0 14px 32px rgba(25, 33, 44, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.85);
@@ -85,9 +80,6 @@
       padding-bottom: 96px;
     }
 
-    /* ============================================================
-       BARRE FLOTTANTE DU HAUT
-       ============================================================ */
     .top-nav-wrapper {
       position: sticky;
       top: 14px;
@@ -207,9 +199,6 @@
       fill: currentColor;
     }
 
-    /* ============================================================
-       CONTENU PRINCIPAL
-       ============================================================ */
     main {
       flex: 1;
       max-width: 840px;
@@ -333,9 +322,6 @@
       justify-content: space-between;
     }
 
-    /* ============================================================
-       BARRE FLOTTANTE DU BAS : M3 D'ORIGINE & CENTRÉE
-       ============================================================ */
     .bottom-nav-container {
       position: fixed;
       bottom: calc(20px + env(safe-area-inset-bottom, 0px));
@@ -363,7 +349,7 @@
       padding: 6px 10px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       box-shadow: var(--nav-shadow);
       width: fit-content;
     }
@@ -378,10 +364,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 6px 14px;
+      padding: 6px 11px;
       border-radius: 9999px;
       gap: 3px;
-      min-width: 78px;
+      min-width: 68px;
       transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
     }
 
@@ -392,7 +378,7 @@
     }
 
     .dock-tab span {
-      font-size: 0.72rem;
+      font-size: 0.70rem;
       font-weight: 500;
       line-height: 1;
       white-space: nowrap;
@@ -415,7 +401,6 @@
 </head>
 <body>
 
-  <!-- BARRE SUPÉRIEURE -->
   <div class="top-nav-wrapper">
     <header class="top-nav">
       <a href="#" class="logo-container">
@@ -424,7 +409,6 @@
       </a>
 
       <div class="top-actions">
-        <!-- Commutateur de Thème -->
         <button id="themeToggle" class="theme-toggle-btn" aria-label="Changer de thème">
           <svg class="icon-sun" viewBox="0 0 24 24">
             <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0z"/>
@@ -434,7 +418,6 @@
           </svg>
         </button>
 
-        <!-- Bouton Groupe Facebook -->
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="btn-fb" aria-label="Rejoindre le Groupe Facebook">
           <svg viewBox="0 0 24 24">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -444,9 +427,8 @@
     </header>
   </div>
 
-  <!-- CONTENU -->
   <main>
-    <section class="hero-banner">
+    <section id="heroBanner" class="hero-banner">
       <div class="hero-pill">
         <div class="hero-pill-dot"></div>
         <span>Communauté Francophone Google Pixel</span>
@@ -456,12 +438,11 @@
     </section>
 
     <div class="section-header">
-      <h2 id="categoryTitle" class="section-title">Pixel Phones & Watchs</h2>
-      <p id="categoryDesc" class="section-subtitle">Appareils, nouveautés matérielles et comparatifs</p>
+      <h2 id="categoryTitle" class="section-title">Accueil</h2>
+      <p id="categoryDesc" class="section-subtitle">Toutes les publications et l'actualité générale</p>
     </div>
 
     <section class="articles-feed">
-      <!-- Article Onglet 1 : Appareils -->
       <article class="article-card" data-category="devices">
         <span class="tag-badge">Matériel & Écosystème</span>
         <h2>Bienvenue sur l'espace Pixel Phones & Watchs</h2>
@@ -472,8 +453,7 @@
         </div>
       </article>
 
-      <!-- Article Onglet 2 : Beta -->
-      <article class="article-card" data-category="beta" style="display: none;">
+      <article class="article-card" data-category="beta">
         <span class="tag-badge">Suivi Logiciel</span>
         <h2>Espace des versions Beta d'Android</h2>
         <p>Suivi complet des versions trimestrielles (QPR), rapports de bugs corrigés et nouveautés en cours de test sur les appareils Google Pixel.</p>
@@ -483,8 +463,7 @@
         </div>
       </article>
 
-      <!-- Article Onglet 3 : Astuces -->
-      <article class="article-card" data-category="tips" style="display: none;">
+      <article class="article-card" data-category="tips">
         <span class="tag-badge">Guide Pratique</span>
         <h2>L'astuce du jour</h2>
         <p>Découvrez comment exploiter au maximum votre appareil : raccourcis de la Gomme Magique, gestion intelligente de la batterie et personnalisation avancée.</p>
@@ -496,10 +475,14 @@
     </section>
   </main>
 
-  <!-- BARRE FLOTTANTE DU BAS DOUCE ET CENTRÉE -->
   <div id="bottomNav" class="bottom-nav-container">
     <nav class="bottom-dock">
-      <button class="dock-tab active" data-target="devices">
+      <button class="dock-tab active" data-target="home">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>Accueil</span>
+      </button>
+
+      <button class="dock-tab" data-target="devices">
         <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
         <span>Appareils</span>
       </button>
@@ -516,9 +499,7 @@
     </nav>
   </div>
 
-  <!-- SCRIPTS -->
   <script>
-    // 1. Thème Clair / Sombre
     const themeToggle = document.getElementById('themeToggle');
     const root = document.documentElement;
 
@@ -532,7 +513,6 @@
       localStorage.setItem('pixel_actu_theme', nextTheme);
     });
 
-    // 2. Disparition au défilement
     const bottomNav = document.getElementById('bottomNav');
     let lastScrollY = window.scrollY;
 
@@ -546,13 +526,14 @@
       lastScrollY = currentScrollY;
     }, { passive: true });
 
-    // 3. Filtrage dynamique des 3 onglets
     const tabs = document.querySelectorAll('.dock-tab');
     const articles = document.querySelectorAll('.article-card');
+    const heroBanner = document.getElementById('heroBanner');
     const categoryTitle = document.getElementById('categoryTitle');
     const categoryDesc = document.getElementById('categoryDesc');
 
     const metaInfo = {
+      home: { title: "Accueil", desc: "Toutes les publications et l'actualité générale" },
       devices: { title: "Pixel Phones & Watchs", desc: "Appareils, nouveautés matérielles et comparatifs" },
       beta: { title: "Mises à jour & Beta", desc: "Déploiements QPR, suivi des versions et correctifs" },
       tips: { title: "Astuce du jour", desc: "Conseils pratiques, photo et fonctionnalités avancées" }
@@ -567,9 +548,15 @@
         categoryTitle.textContent = metaInfo[cat].title;
         categoryDesc.textContent = metaInfo[cat].desc;
 
-        articles.forEach(art => {
-          art.style.display = (art.getAttribute('data-category') === cat) ? 'block' : 'none';
-        });
+        if (cat === 'home') {
+          heroBanner.style.display = 'block';
+          articles.forEach(art => art.style.display = 'block');
+        } else {
+          heroBanner.style.display = 'none';
+          articles.forEach(art => {
+            art.style.display = (art.getAttribute('data-category') === cat) ? 'block' : 'none';
+          });
+        }
       });
     });
   </script>
