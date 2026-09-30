@@ -473,7 +473,13 @@
         <h3 class="section-title">En direct aujourd'hui :</h3>
         <ul>
           <li><strong>Mises à jour :</strong> Déploiement accéléré des dernières builds QPR avec des correctifs de stabilité majeurs.</li>
-          <li><strong>Appareils :</strong> </li>
+          <li id="rss-container">
+  <strong>Actualités en direct (RSS) :</strong>
+  <ul id="rss-list" style="margin-top: 6px; list-style-type: circle; padding-left: 20px;">
+    <li><em>Chargement des dernières actus...</em></li>
+  </ul>
+</li>
+
         </ul>
 
         <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.85;">
@@ -738,6 +744,39 @@
     }
   });
 });
+    // Chargement automatique du flux RSS
+async function loadRSSFeed() {
+  const rssList = document.getElementById('rss-list');
+  if (!rssList) return;
+
+  // Remplacez l'URL ci-dessous par le flux RSS de votre choix
+  const feedUrl = 'https://blog.google/products-and-platforms/devices/pixel/rss/';
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    if (data.status === 'ok' && data.items.length > 0) {
+      rssList.innerHTML = ''; // On vide le message de chargement
+      // On affiche les 3 derniers articles
+      data.items.slice(0, 3).forEach(item => {
+        const li = document.createElement('li');
+        li.style.marginBottom = '6px';
+        li.innerHTML = `<a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">${item.title}</a>`;
+        rssList.appendChild(li);
+      });
+    } else {
+      rssList.innerHTML = '<li>Impossible de charger le flux actuellement.</li>';
+    }
+  } catch (error) {
+    rssList.innerHTML = '<li>Erreur lors du chargement des actualités.</li>';
+  }
+}
+
+// Lancement au chargement
+loadRSSFeed();
+
 </script>
 
 
