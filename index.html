@@ -775,6 +775,18 @@ async function loadRSSFeed() {
 }
 
 // Lancement au chargement
+
+    loadRSSFeed();
+// Filtrage initial au chargement de la page
+articles.forEach(art => {
+  art.style.display = (art.getAttribute('data-category') === 'home') ? 'block' : 'none';
+});
+// Initialisation : afficher uniquement l'Accueil dès l'ouverture
+articles.forEach(art => {
+  art.style.display = (art.getAttribute('data-category') === 'home') ? 'block' : 'none';
+});
+
+// Lancement du flux RSS
 loadRSSFeed();
 
 </script>
