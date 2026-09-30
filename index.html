@@ -517,24 +517,37 @@
       .hero-banner { padding: 26px 18px; border-radius: 22px; }
       .hero-banner h1 { font-size: 1.6rem; }
       
-      /* Optimisation Mobile Dock : bien centrée et contrastée */
+      /* Optimisation Mobile Dock : capsule compacte parfaitement centrée sans étalement */
       .floating-bottom-nav-wrapper {
-        padding: 0 12px;
-        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-      }
-      .floating-bottom-dock {
-        width: 100%;
-        justify-content: space-around;
-        padding: 5px 6px;
-        gap: 3px;
-      }
-      .dock-tab {
-        padding: 8px 10px;
-        font-size: 0.74rem;
-        gap: 5px;
-        flex: 1;
+        padding: 0 16px;
+        bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+        display: flex;
         justify-content: center;
+        align-items: center;
+        width: 100%;
+        left: 0;
+        right: 0;
       }
+
+      .floating-bottom-dock {
+        width: fit-content;
+        max-width: calc(100vw - 32px);
+        margin: 0 auto;
+        justify-content: center;
+        padding: 5px 6px;
+        gap: 4px;
+        border-radius: 9999px;
+      }
+
+      .dock-tab {
+        padding: 7px 11px;
+        font-size: 0.72rem;
+        gap: 5px;
+        flex: 0 1 auto;
+        justify-content: center;
+        border-radius: 9999px;
+      }
+
       .dock-tab svg {
         width: 15px;
         height: 15px;
