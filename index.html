@@ -8,15 +8,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    /* ============================================================
-       VARIABLES CSS : MATERIAL 3 EXPRESSIVE ORIGINEL
-       ============================================================ */
     :root[data-theme="dark"] {
       --bg-color: #0f141a;
       --text-main: #e2e8f0;
       --text-muted: #94a3b8;
       
-      /* Translucidité verre dépoli douce d'origine (Dark) */
       --nav-bg: rgba(20, 26, 34, 0.65);
       --nav-border: rgba(255, 255, 255, 0.12);
       --nav-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -41,7 +37,6 @@
       --text-main: #191c20;
       --text-muted: #5e6b7c;
       
-      /* Translucidité verre dépoli douce d'origine (Light) */
       --nav-bg: rgba(255, 255, 255, 0.72);
       --nav-border: rgba(0, 0, 0, 0.08);
       --nav-shadow: 0 14px 32px rgba(25, 33, 44, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.85);
@@ -82,10 +77,10 @@
         radial-gradient(ellipse 65% 45% at 50% -12%, var(--glow-1), transparent 72%),
         radial-gradient(ellipse 45% 35% at 88% 22%, var(--glow-2), transparent 65%);
       background-attachment: fixed;
-      padding-bottom: 100px;
+      padding-bottom: 110px;
     }
 
-    /* BARRE FLOTTANTE SUPÉRIEURE */
+    /* BARRE DU HAUT */
     .top-nav-wrapper {
       position: sticky;
       top: 14px;
@@ -263,7 +258,11 @@
       margin: 0 auto;
     }
 
-    .section-header {
+    .section-header-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
       margin-bottom: 20px;
     }
 
@@ -276,6 +275,36 @@
     .section-subtitle {
       font-size: 0.85rem;
       color: var(--text-muted);
+    }
+
+    /* BOUTON AJOUTER DIRECT DANS L'ONGLET */
+    .btn-add-tab {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      border: 1px solid var(--nav-border);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-family: 'Google Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .btn-add-tab:hover {
+      background: var(--primary);
+      color: var(--on-primary);
+      transform: translateY(-1px);
+    }
+
+    .btn-add-tab svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
     }
 
     .articles-feed {
@@ -291,6 +320,7 @@
       border-radius: 24px;
       padding: 24px;
       box-shadow: var(--card-shadow);
+      position: relative;
     }
 
     .tag-badge {
@@ -318,6 +348,7 @@
       font-size: 0.94rem;
       margin-bottom: 18px;
       line-height: 1.6;
+      white-space: pre-line;
     }
 
     .card-meta {
@@ -327,11 +358,25 @@
       padding-top: 14px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
-    /* ============================================================
-       BARRE FLOTTANTE DU BAS FIXE ET PERMANENTE (4 ONGLETS)
-       ============================================================ */
+    .btn-delete-article {
+      background: rgba(239, 68, 68, 0.12);
+      color: #ef4444;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .btn-delete-article:hover {
+      background: rgba(239, 68, 68, 0.22);
+    }
+
+    /* BARRE FLOTTANTE DU BAS (4 ONGLETS) FIXE */
     .bottom-nav-container {
       position: fixed;
       bottom: calc(20px + env(safe-area-inset-bottom, 0px));
@@ -401,11 +446,110 @@
     .dock-tab.active svg {
       fill: currentColor;
     }
+
+    /* MODAL DE PUBLICATION & SÉCURITÉ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 16px;
+    }
+
+    .modal-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 24px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: var(--card-shadow);
+      color: var(--text-main);
+    }
+
+    .modal-card h3 {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+
+    .form-control {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      border: none;
+      padding: 8px 20px;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 600;
+    }
   </style>
+
+  <!-- SDK FIREBASE FIRESTORE -->
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
-  <!-- BARRE SUPÉRIEURE -->
+  <!-- BARRE DU HAUT -->
   <div class="top-nav-wrapper">
     <header class="top-nav">
       <a href="#" class="logo-container">
@@ -424,7 +568,7 @@
           </svg>
         </button>
 
-        <!-- Bouton Groupe Facebook -->
+        <!-- Groupe Facebook -->
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="btn-fb" aria-label="Rejoindre le Groupe Facebook">
           <svg viewBox="0 0 24 24">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -442,73 +586,87 @@
         <span>Communauté Francophone Google Pixel</span>
       </div>
       <h1>L'écosystème Pixel en un coup d'œil</h1>
-      <p>Actualités matérielles et logiciel, suivi des versions Beta partagées au fil de l'eau.</p>
+      <p>Actualités matérielles, suivi des versions Beta et astuces photographiques partagées en temps réel.</p>
     </section>
 
-    <div class="section-header">
-      <h2 id="categoryTitle" class="section-title">Accueil</h2>
-      <p id="categoryDesc" class="section-subtitle">Toutes les publications et l'actualité générale</p>
+    <!-- EN-TÊTE DE SECTION AVEC LE BOUTON AJOUTER DÉDIÉ -->
+    <div class="section-header-wrap">
+      <div>
+        <h2 id="categoryTitle" class="section-title">Accueil</h2>
+        <p id="categoryDesc" class="section-subtitle">Toutes les publications et l'actualité générale</p>
+      </div>
+
+      <button id="addArticleBtn" class="btn-add-tab">
+        <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        <span>Ajouter</span>
+      </button>
     </div>
 
-    <!-- FLUX D'ARTICLES -->
-    <section class="articles-feed">
-      <!-- Article Catégorie : Appareils -->
-      <article class="article-card" data-category="devices">
-        <span class="tag-badge">Matériel & Écosystème</span>
-        <h2>Bienvenue sur l'espace Pixel Phones & Watchs</h2>
-        <p>Retrouvez ici les actualités, annonces officielles,dédiés aux smartphones Pixel et aux montres connectées Pixel Watch.</p>
-        <div class="card-meta">
-          <span>Équipe Pixel Actu</span>
-          <span>Dossier matériel</span>
-        </div>
-      </article>
-
-      <!-- Article Catégorie : Mises à jour -->
-      <article class="article-card" data-category="beta">
-        <span class="tag-badge">Suivi Logiciel</span>
-        <h2>Espace des versions Beta d'Android</h2>
-        <p>Suivi complet des versions trimestrielles (QPR), rapports de bugs corrigés et nouveautés en cours de test sur les appareils Google Pixel.</p>
-        <div class="card-meta">
-          <span>Programme Beta</span>
-          <span>Notes de versions</span>
-        </div>
-      </article>
-
-      <!-- Article Catégorie : Astuces -->
-      <article class="article-card" data-category="tips">
-        <span class="tag-badge">Guide Pratique</span>
-        <h2>L'astuce du jour</h2>
-        <p>Découvrez comment exploiter au maximum votre appareil.</p>
-        <div class="card-meta">
-          <span>Conseil d'utilisation</span>
-          <span>Guide rapide</span>
-        </div>
-      </article>
+    <!-- FLUX D'ARTICLES SYNCHRONISÉ AVEC FIREBASE -->
+    <section id="articlesContainer" class="articles-feed">
+      <p style="text-align: center; color: var(--text-muted); padding: 30px 0;">Chargement des articles en cours...</p>
     </section>
   </main>
 
-  <!-- BARRE FLOTTANTE DU BAS (4 ONGLETS) TOUJOURS VISIBLE -->
+  <!-- MODAL DE PUBLICATION AVEC CODE SECRET ALPHA -->
+  <div id="publishModal" class="modal-overlay">
+    <div class="modal-card">
+      <h3 id="modalHeading">Ajouter un article</h3>
+
+      <div class="form-group">
+        <label for="adminCodeInput">Code secret administrateur</label>
+        <input type="password" id="adminCodeInput" class="form-control" placeholder="Entrez le code secret...">
+      </div>
+
+      <div class="form-group">
+        <label for="postCategory">Rubrique</label>
+        <select id="postCategory" class="form-control">
+          <option value="devices">Pixel Phones & Watchs</option>
+          <option value="beta">Mises à jour & Beta</option>
+          <option value="tips">Astuces du jour</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="postTag">Badge / Tag (ex: Pixel 10 Pro, QPR3, Photo)</label>
+        <input type="text" id="postTag" class="form-control" placeholder="Pixel 10 Pro">
+      </div>
+
+      <div class="form-group">
+        <label for="postTitle">Titre de l'article</label>
+        <input type="text" id="postTitle" class="form-control" placeholder="Titre de votre article...">
+      </div>
+
+      <div class="form-group">
+        <label for="postContent">Contenu</label>
+        <textarea id="postContent" class="form-control" placeholder="Rédigez votre texte ici..."></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button id="cancelModal" type="button" class="btn-secondary">Annuler</button>
+        <button id="submitPost" type="button" class="btn-primary">Publier</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARRE FLOTTANTE DU BAS PERMANENTE (4 ONGLETS) -->
   <div id="bottomNav" class="bottom-nav-container">
     <nav class="bottom-dock">
-      <!-- 1. ACCUEIL -->
       <button class="dock-tab active" data-target="home">
         <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
         <span>Accueil</span>
       </button>
 
-      <!-- 2. APPAREILS -->
       <button class="dock-tab" data-target="devices">
         <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
         <span>Appareils</span>
       </button>
 
-      <!-- 3. MISES À JOUR -->
       <button class="dock-tab" data-target="beta">
         <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
         <span>Mises à jour</span>
       </button>
 
-      <!-- 4. ASTUCES -->
       <button class="dock-tab" data-target="tips">
         <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
         <span>Astuces</span>
@@ -516,58 +674,11 @@
     </nav>
   </div>
 
-  <!-- SCRIPTS JAVASCRIPT -->
   <script>
-    // 1. Gestion du thème Sombre / Clair
-    const themeToggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
-
-    const savedTheme = localStorage.getItem('pixel_actu_theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.setAttribute('data-theme', savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light'));
-
-    themeToggle.addEventListener('click', () => {
-      const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', nextTheme);
-      localStorage.setItem('pixel_actu_theme', nextTheme);
-    });
-
-    // 2. Filtrage dynamique par onglets
-    const tabs = document.querySelectorAll('.dock-tab');
-    const articles = document.querySelectorAll('.article-card');
-    const heroBanner = document.getElementById('heroBanner');
-    const categoryTitle = document.getElementById('categoryTitle');
-    const categoryDesc = document.getElementById('categoryDesc');
-
-    const metaInfo = {
-      home: { title: "Accueil", desc: "Toutes les publications et l'actualité générale" },
-      devices: { title: "Pixel Phones & Watchs", desc: "Appareils, nouveautés matérielles et logiciel" },
-      beta: { title: "Mises à jour & Beta", desc: "Déploiements QPR, suivi des versions et correctifs" },
-      tips: { title: "Astuce du jour", desc: "Conseils pratiques,et fonctionnalités avancées" }
-    };
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        const cat = tab.getAttribute('data-target');
-        categoryTitle.textContent = metaInfo[cat].title;
-        categoryDesc.textContent = metaInfo[cat].desc;
-
-        if (cat === 'home') {
-          heroBanner.style.display = 'block';
-          articles.forEach(art => art.style.display = 'block');
-        } else {
-          heroBanner.style.display = 'none';
-          articles.forEach(art => {
-            art.style.display = (art.getAttribute('data-category') === cat) ? 'block' : 'none';
-          });
-        }
-      });
-    });
-  </script>
-</body>
-</html>
-
-
+    // 1. CONFIGURATION OFFICIELLE FIREBASE
+    const firebaseConfig = {
+      apiKey: "AIzaSyC2SYYfdF5_4i8Idu_nu1L0sjNb1HICr3Q",
+      authDomain: "site-actu-pixel.firebaseapp.com",
+      projectId: "site-actu-pixel",
+      storageBucket: "site-actu-pixel.firebasestorage.app",
+      messaging
