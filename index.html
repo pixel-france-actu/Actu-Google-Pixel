@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pixel Actu — Le Hub de la Communauté Google Pixel</title>
-  
-  <!-- Polices Google : Plus Jakarta Sans & Space Grotesk -->
+
+  <!-- Polices Google : Google Sans & Roboto Flex -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -18,15 +18,20 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['"Roboto"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            google: {
-              blue: '#4285F4',
-              red: '#EA4335',
-              yellow: '#FBBC05',
-              green: '#34A853',
+            m3: {
+              surface: '#111418',
+              surfaceContainer: '#171c22',
+              surfaceContainerHigh: '#212730',
+              primary: '#A8C7FA',
+              onPrimary: '#04315A',
+              secondary: '#BDC7DC',
+              outlineVariant: 'rgba(255, 255, 255, 0.12)',
+              text: '#E2E2E6',
+              textMuted: '#949BA6',
             }
           }
         }
@@ -35,206 +40,255 @@
   </script>
 
   <style>
-    /* Barre de navigation flottante avec effet de flou et relief */
-    .floating-nav {
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.08);
-    }
-    
-    .light .floating-nav {
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    /* ============================================================ */
+    /* FEUILLES DE STYLE MATERIAL 3 EXPRESSIVE & TRANSLUCIDITÉ      */
+    /* ============================================================ */
+    :root {
+      --m3-elevation-nav: 0 16px 36px -4px rgba(0, 0, 0, 0.45), 0 6px 14px -2px rgba(0, 0, 0, 0.3);
+      --m3-border-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.12);
     }
 
-    /* Dégradé doux Material You en fond */
-    .hero-glow {
-      background: radial-gradient(circle at 50% 20%, rgba(66, 133, 244, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-    }
-
-    /* Transition douce pour le changement de thème */
     body {
-      transition: background-color 0.3s ease, color 0.3s ease;
+      background-color: #0e1216;
+      color: #E2E2E6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* M3 Expressive Glass Capsule */
+    .m3-floating-pill {
+      background: rgba(22, 28, 36, 0.62);
+      backdrop-filter: blur(28px) saturate(190%) contrast(105%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(105%);
+      box-shadow: var(--m3-elevation-nav), var(--m3-border-specular);
+      border-radius: 9999px;
+      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .m3-floating-pill:hover {
+      background: rgba(26, 33, 42, 0.72);
+      box-shadow: 0 20px 42px -4px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.18);
+    }
+
+    /* Fond d'ambiance réactif façon Monet / Material 3 */
+    .ambient-monet-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(circle 650px at 50% -8%, rgba(66, 133, 244, 0.18), transparent 75%),
+        radial-gradient(circle 500px at 85% 15%, rgba(52, 168, 83, 0.09), transparent 70%),
+        radial-gradient(circle 450px at 15% 45%, rgba(234, 67, 53, 0.08), transparent 70%),
+        radial-gradient(circle 600px at 70% 85%, rgba(251, 188, 5, 0.07), transparent 75%);
+    }
+
+    /* Conteneur Expressif avec bordure douce */
+    .m3-card {
+      background: rgba(23, 28, 34, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1), border-color 0.22s;
+    }
+
+    .m3-card:hover {
+      border-color: rgba(168, 199, 250, 0.35);
+      transform: translateY(-2px);
     }
   </style>
 </head>
-<body class="bg-[#0B0C0F] text-[#E3E4E8] dark:bg-[#0B0C0F] dark:text-[#E3E4E8] antialiased selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between">
+<body class="selection:bg-blue-500 selection:text-slate-950">
 
-  <!-- ========================================== -->
-  <!-- BARRE DE NAVIGATION FLOTTANTE (CAPSULE)     -->
-  <!-- ========================================== -->
-  <div class="fixed top-4 sm:top-6 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
-    <header class="floating-nav pointer-events-auto w-full max-w-4xl bg-[#14161C]/85 dark:bg-[#14161C]/85 border border-white/10 dark:border-white/10 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between transition-all duration-300">
+  <!-- Halo d'ambiance Monet réactif (rend visible la translucidité de la barre flottante) -->
+  <div class="ambient-monet-glow"></div>
+
+
+  <!-- ============================================================ -->
+  <!-- BARRE DE NAVIGATION FLOTTANTE M3 EXPRESSIVE (CAPSULE PILL)  -->
+  <!-- ============================================================ -->
+  <div class="fixed top-3.5 sm:top-5 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+    <nav class="m3-floating-pill pointer-events-auto w-full max-w-4xl px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-4">
       
-      <!-- Logo Pixel Actu -->
-      <a href="#" class="flex items-center gap-3 group focus:outline-none">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-blue-600 via-indigo-500 to-teal-400 p-[2px] shadow-sm shadow-blue-500/30 group-hover:scale-105 transition-transform duration-200">
-          <div class="w-full h-full bg-[#111216] rounded-full flex items-center justify-center">
-            <!-- P stylisé aux couleurs Google -->
-            <span class="font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-google-blue to-google-red text-lg sm:text-xl">P</span>
+      <!-- Logo et Identité Pixel Actu -->
+      <a href="#accueil" class="flex items-center gap-3 group focus:outline-none">
+        <div class="relative flex items-center justify-center">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#1b222c] border border-white/20 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-200">
+            <span class="font-display font-black text-transparent bg-clip-text bg-gradient-to-tr from-[#A8C7FA] via-blue-400 to-indigo-300 text-base sm:text-lg">P</span>
           </div>
+          <!-- Point vibrant Pixel Tensor -->
+          <span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-[#A8C7FA] shadow-[0_0_8px_#A8C7FA] ring-2 ring-[#161C24]"></span>
         </div>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-1.5">
-            <span class="font-display font-bold text-lg tracking-tight text-white">Pixel<span class="text-blue-400">Actu</span></span>
-            <span class="inline-flex items-center px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30">FR</span>
-          </div>
+        <div class="flex items-center gap-1.5">
+          <span class="font-display font-bold text-base sm:text-lg tracking-tight text-white">Pixel<span class="text-[#A8C7FA]">Actu</span></span>
+          <span class="hidden sm:inline-block px-1.5 py-0.5 rounded-md text-[10px] font-bold bg-[#A8C7FA]/10 text-[#A8C7FA] border border-[#A8C7FA]/20">FR</span>
         </div>
       </a>
 
-      <!-- Liens internes fluides -->
-      <nav class="hidden md:flex items-center gap-6 font-medium text-xs sm:text-sm text-slate-300">
-        <a href="#accueil" class="hover:text-white transition-colors">Accueil</a>
-        <a href="#actus" class="hover:text-white transition-colors">Actualités</a>
-        <a href="#communaute" class="hover:text-white transition-colors">Communauté</a>
-      </nav>
+      <!-- Raccourcis de navigation expressifs -->
+      <div class="hidden md:flex items-center gap-7 text-xs sm:text-sm font-medium text-slate-300">
+        <a href="#accueil" class="hover:text-white transition-colors duration-150">Accueil</a>
+        <a href="#actus" class="hover:text-white transition-colors duration-150">Actualités</a>
+        <a href="#communaute" class="hover:text-white transition-colors duration-150">Communauté</a>
+      </div>
 
-      <!-- Boutons d'actions : Thème + Bouton Groupe Facebook -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        
-        <!-- Sélecteur Thème Clair / Sombre -->
-        <button id="themeToggle" aria-label="Changer de thème" class="p-2 sm:p-2.5 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors border border-white/5">
-          <!-- Soleil (mode sombre) -->
-          <svg id="sunIcon" class="w-4 h-4 sm:w-4.5 sm:h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          <!-- Lune (mode clair) -->
-          <svg id="moonIcon" class="w-4 h-4 sm:w-4.5 sm:h-4.5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
-        </button>
-
-        <!-- Bouton Groupe Facebook (MODIFIER LE LIEN CI-DESSOUS) -->
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4.5 sm:py-2 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm shadow-md shadow-blue-500/20 transition-all transform active:scale-95">
-          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24">
+      <!-- Bouton d'action principal : Groupe Facebook -->
+      <div class="flex items-center gap-2">
+        <!-- MODIFIEZ L'URL CI-DESSOUS AVEC VOTRE LIEN DE GROUPE -->
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#A8C7FA] hover:bg-[#c2d7fb] text-[#04315A] font-display font-semibold text-xs sm:text-sm shadow-md transition-all duration-200 transform active:scale-95">
+          <!-- Icône Facebook -->
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
           </svg>
-          <span class="hidden sm:inline">Groupe Facebook</span>
+          <span class="hidden sm:inline">Rejoindre le Groupe</span>
           <span class="sm:hidden">Groupe</span>
         </a>
-
       </div>
-    </header>
+
+    </nav>
   </div>
 
-  <!-- ========================================== -->
-  <!-- CONTENU PRINCIPAL                          -->
-  <!-- ========================================== -->
-  <main id="accueil" class="pt-28 sm:pt-36 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1">
-    
-    <!-- Hero Banner épuré Material 3 -->
-    <section class="hero-glow rounded-[2.5rem] bg-gradient-to-b from-[#15171F] to-[#0E1015] border border-white/10 p-8 sm:p-14 text-center relative overflow-hidden mb-12 shadow-2xl">
-      <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+
+  <!-- ============================================================ -->
+  <!-- CONTENU PRINCIPAL                                            -->
+  <!-- ============================================================ -->
+  <main class="relative z-10 flex-1 max-w-4xl mx-auto px-4 sm:px-6 w-full pt-28 sm:pt-36 pb-20">
+
+    <!-- Hero Banner M3 Expressive -->
+    <section id="accueil" class="m3-card rounded-[2.5rem] p-7 sm:p-12 mb-12 text-center relative overflow-hidden">
+      <div class="max-w-2xl mx-auto space-y-5">
         
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-400 text-xs font-semibold">
-          <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-          Communauté Francophone Google Pixel
+        <!-- Badge pilule stylisé -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#A8C7FA]/10 border border-[#A8C7FA]/20 text-[#A8C7FA] text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-[#A8C7FA] animate-pulse"></span>
+          Communauté d'entraide & Passionnés Google Pixel
         </div>
 
         <h1 class="text-3xl sm:text-5xl font-display font-extrabold tracking-tight leading-tight text-white">
-          L'actualité Google Pixel, <br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-google-blue via-indigo-300 to-teal-300">
-            au cœur de la communauté.
+          L'écosystème Pixel, <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#A8C7FA] via-blue-300 to-teal-200">
+            partagé et décrypté.
           </span>
         </h1>
 
-        <p class="text-sm sm:text-base text-slate-400 leading-relaxed">
-          Mises à jour Android, fonctionnalités IA, Pixel Watch, astuces photo GCam et conseils d'utilisation partagés par des passionnés.
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-sans max-w-xl mx-auto">
+          Mises à jour système, astuces d'utilisation, photographie computationnelle et échanges directs avec la communauté francophone.
         </p>
 
-        <!-- Raccourcis d'action -->
-        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-          <a href="#communaute" class="px-6 py-3 rounded-full bg-white text-slate-950 font-bold text-xs sm:text-sm hover:bg-slate-200 transition-all transform active:scale-95 shadow-lg">
-            Rejoindre la communauté &rarr;
+        <!-- Actions rapides -->
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-3">
+          <a href="#actus" class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white text-xs sm:text-sm font-medium transition-all">
+            Consulter les actus
           </a>
-          <a href="#actus" class="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium text-xs sm:text-sm hover:bg-white/10 transition-colors">
-            Voir les actualités
+          <a href="#communaute" class="px-5 py-2.5 rounded-full bg-[#A8C7FA] hover:bg-[#c2d7fb] text-[#04315A] text-xs sm:text-sm font-semibold transition-all">
+            Le groupe Facebook &rarr;
           </a>
         </div>
 
       </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- SECTION ACTUALITÉS (PROPRE & SANS ARTICLES FACTICES) -->
-    <!-- ========================================== -->
+    <!-- ============================================================ -->
+    <!-- SECTION ACTUALITÉS & PUBLICATIONS                            -->
+    <!-- ============================================================ -->
     <section id="actus" class="mb-14">
-      <div class="flex items-center justify-between pb-6 border-b border-white/10 mb-8">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-8">
         <div>
-          <h2 class="text-xl sm:text-2xl font-display font-bold text-white">Fil d'actualité</h2>
-          <p class="text-xs sm:text-sm text-slate-400 mt-1">Les derniers partages et dossiers de la communauté.</p>
+          <h2 class="text-xl sm:text-2xl font-display font-bold text-white tracking-tight">Fil d'actualité</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Les récapitulatifs et guides de la communauté.</p>
         </div>
       </div>
 
-      <!-- Zone vide soignée prête à accueillir vos vrais articles -->
-      <div class="rounded-3xl border border-dashed border-white/15 bg-white/[0.02] p-10 sm:p-14 text-center">
-        <div class="w-14 h-14 mx-auto rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-4">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
-          </svg>
-        </div>
-        <h3 class="font-display font-bold text-lg text-white">Les premiers articles arrivent bientôt</h3>
-        <p class="text-xs sm:text-sm text-slate-400 max-w-md mx-auto mt-2 leading-relaxed">
-          Le site vient d'être mis en place ! Les prochaines actus Pixel et guides pratiques seront publiés ici très prochainement.
-        </p>
-      </div>
+      <!-- Flux d'articles (Propre : un seul article d'inauguration pour démarrer) -->
+      <div class="grid grid-cols-1 gap-6">
 
-      <!-- ========================================================================= -->
-      <!-- EXEMPLE DE CODE POUR AJOUTER UN ARTICLE PLUS TARD :                     -->
-      <!-- Il suffira de décommenter ce bloc et de modifier le titre et le texte : -->
-      <!--
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-        <article class="rounded-3xl p-6 bg-[#14161C] border border-white/10 hover:border-blue-500/40 transition-all flex flex-col justify-between">
-          <div>
-            <span class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-blue-500/10 text-blue-400 border border-blue-500/20">
-              Mise à jour
-            </span>
-            <h3 class="font-display font-bold text-lg text-white mt-4">
-              Titre de votre premier article ici
+        <!-- ARTICLE 1 : MODÈLE PRÊT À ÊTRE ÉDITÉ -->
+        <article class="m3-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#A8C7FA]/10 text-[#A8C7FA] border border-[#A8C7FA]/20">
+                Lancement
+              </span>
+              <span class="text-xs text-slate-400">• Mis en ligne récemment</span>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-display font-bold text-white hover:text-[#A8C7FA] transition-colors cursor-pointer">
+              Bienvenue sur le nouvel espace Pixel Actu France
             </h3>
-            <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
-              Voici le résumé ou le paragraphe explicatif de votre actualité Pixel...
+
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Nous ouvrons ce hub pour centraliser les actualités de la gamme Google Pixel, relayer les guides d'utilisation et faciliter les échanges de notre communauté Facebook. N'hésitez pas à nous rejoindre pour participer aux discussions !
             </p>
           </div>
-          <div class="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-500">
-            <span>Publié aujourd'hui</span>
-            <span class="text-blue-400 font-medium">Lire la suite &rarr;</span>
+
+          <div class="pt-5 mt-5 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 font-medium">
+            <span>Rédigé par l'équipe</span>
+            <span class="text-[#A8C7FA] flex items-center gap-1">Espace Communautaire</span>
           </div>
         </article>
-      </div>
-      -->
-      <!-- ========================================================================= -->
 
+        <!-- ========================================================================= -->
+        <!-- GABARIT POUR AJOUTER UN DEUXIÈME ARTICLE PLUS TARD :                     -->
+        <!-- Il vous suffira de décommenter le bloc ci-dessous (enlever /* et */)      -->
+        <!-- et de remplacer le titre et le paragraphe par votre texte :              -->
+        <!--
+        <article class="m3-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                Mise à jour
+              </span>
+              <span class="text-xs text-slate-400">• Aujourd'hui</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-display font-bold text-white">
+              Titre de votre prochain article ici
+            </h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Votre texte ou résumé de la mise à jour, astuce photo ou tutoriel...
+            </p>
+          </div>
+          <div class="pt-5 mt-5 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 font-medium">
+            <span>Publié par l'équipe</span>
+            <span class="text-[#A8C7FA]">Lire l'article &rarr;</span>
+          </div>
+        </article>
+        -->
+        <!-- ========================================================================= -->
+
+      </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- SECTION COMMUNAUTÉ / GROUPE FACEBOOK       -->
-    <!-- ========================================== -->
-    <section id="communaute" class="mb-14">
-      <div class="rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-blue-700 via-indigo-700 to-blue-900 text-white shadow-xl shadow-blue-600/15 relative overflow-hidden border border-white/20">
-        <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-2xl"></div>
-        <div class="relative z-10 max-w-2xl space-y-4">
+    <!-- ============================================================ -->
+    <!-- BANDEAU COMMUNAUTÉ FACEBOOK                                  -->
+    <!-- ============================================================ -->
+    <section id="communaute">
+      <div class="m3-card rounded-[2rem] p-7 sm:p-10 relative overflow-hidden bg-gradient-to-br from-[#182333] via-[#161c24] to-[#12161c] border border-blue-500/20">
+        <div class="relative z-10 max-w-xl space-y-4">
           
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Rejoignez l'échange sur Facebook
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 text-[#A8C7FA] text-xs font-semibold">
+            Rejoignez plus de membres passionnés
           </div>
 
-          <h2 class="text-2xl sm:text-3xl font-display font-extrabold leading-tight">
-            Vous avez un Google Pixel ? Ne restez pas seul avec vos questions !
+          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white leading-tight">
+            Posez vos questions et partagez vos clichés Pixel
           </h2>
 
-          <p class="text-blue-100 text-xs sm:text-sm leading-relaxed">
-            Partagez vos photographies, échangez sur les dernières versions bêta d'Android, découvrez des accessoires recommandés et entraidez-vous au quotidien avec les autres membres.
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Conseils d'achats, réglages de l'application appareil photo, suivi des versions bêta d'Android : retrouvez tout le monde sur notre groupe d'échange Facebook.
           </p>
 
           <div class="pt-2">
-            <!-- LIEN VERS LE GROUPE FACEBOOK -->
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white text-blue-800 hover:bg-blue-50 font-bold text-sm shadow-md transition-all transform active:scale-95">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-              <span>Accéder au Groupe Facebook Pixel</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#A8C7FA] hover:bg-[#c2d7fb] text-[#04315A] font-display font-bold text-xs sm:text-sm shadow-lg transition-transform active:scale-95">
+              <span>Accéder au Groupe Facebook</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
           </div>
 
@@ -244,61 +298,19 @@
 
   </main>
 
-  <!-- ========================================== -->
-  <!-- PIED DE PAGE                               -->
-  <!-- ========================================== -->
-  <footer class="border-t border-white/10 bg-[#08090C] py-8 transition-colors">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-        
-        <div class="flex items-center gap-2">
-          <div class="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white text-[10px]">P</div>
-          <span class="font-display font-bold text-slate-400">Pixel Actu France</span>
-        </div>
-
-        <p class="text-center sm:text-left">
-          Site non affilié à Google Inc. Google et Pixel sont des marques déposées de Google LLC.
-        </p>
-
-        <a href="#accueil" class="hover:text-slate-300 transition-colors">Haut de page &uarr;</a>
+  <!-- ============================================================ -->
+  <!-- PIED DE PAGE DISCRET                                         -->
+  <!-- ============================================================ -->
+  <footer class="relative z-10 border-t border-white/5 bg-[#0a0d10] py-8 text-center text-xs text-slate-500">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[#A8C7FA]"></span>
+        <span class="font-display font-semibold text-slate-400">Pixel Actu France</span>
       </div>
+      <p>Site communautaire indépendant sans affiliation avec Google LLC.</p>
+      <a href="#accueil" class="hover:text-slate-300 transition-colors">Remonter &uarr;</a>
     </div>
   </footer>
 
-  <!-- ========================================== -->
-  <!-- LOGIQUE JS (MODE SOMBRE & INTERACTIONS)     -->
-  <!-- ========================================== -->
-  <script>
-    const themeToggle = document.getElementById('themeToggle');
-    const sunIcon = document.getElementById('sunIcon');
-    const moonIcon = document.getElementById('moonIcon');
-
-    function applyTheme(isDark) {
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-        document.body.className = "bg-[#0B0C0F] text-[#E3E4E8] antialiased selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between";
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
-        localStorage.setItem('pixel_theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
-        document.body.className = "bg-[#F7F9FC] text-[#1E2024] antialiased selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between";
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-        localStorage.setItem('pixel_theme', 'light');
-      }
-    }
-
-    // Lecture du thème enregistré ou sombre par défaut
-    const currentTheme = localStorage.getItem('pixel_theme') || 'dark';
-    applyTheme(currentTheme === 'dark');
-
-    themeToggle.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      applyTheme(!isDark);
-    });
-  </script>
 </body>
 </html>
