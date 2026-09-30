@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    /* ============================================================
+       VARIABLES CSS : MATERIAL 3 EXPRESSIVE ORIGINEL
+       ============================================================ */
     :root[data-theme="dark"] {
       --bg-color: #0f141a;
       --text-main: #e2e8f0;
@@ -77,10 +80,10 @@
         radial-gradient(ellipse 65% 45% at 50% -12%, var(--glow-1), transparent 72%),
         radial-gradient(ellipse 45% 35% at 88% 22%, var(--glow-2), transparent 65%);
       background-attachment: fixed;
-      padding-bottom: 110px;
+      padding-bottom: 100px;
     }
 
-    /* BARRE DU HAUT */
+    /* BARRE FLOTTANTE SUPÉRIEURE */
     .top-nav-wrapper {
       position: sticky;
       top: 14px;
@@ -292,7 +295,7 @@
       align-items: center;
       gap: 6px;
       white-space: nowrap;
-      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+      transition: all 0.2s cubic-bezier(0.2, 0, 1);
     }
 
     .btn-add-tab:hover {
@@ -417,7 +420,7 @@
       border-radius: 9999px;
       gap: 3px;
       min-width: 68px;
-      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+      transition: all 0.2s cubic-bezier(0.2, 0, 1);
     }
 
     .dock-tab svg {
@@ -545,7 +548,7 @@
 </head>
 <body>
 
-  <!-- BARRE DU HAUT -->
+  <!-- BARRE SUPÉRIEURE -->
   <div class="top-nav-wrapper">
     <header class="top-nav">
       <a href="#" class="logo-container">
@@ -564,7 +567,7 @@
           </svg>
         </button>
 
-        <!-- Groupe Facebook -->
+        <!-- Bouton Groupe Facebook -->
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="btn-fb" aria-label="Rejoindre le Groupe Facebook">
           <svg viewBox="0 0 24 24">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -582,7 +585,7 @@
         <span>Communauté Francophone Google Pixel</span>
       </div>
       <h1>L'écosystème Pixel en un coup d'œil</h1>
-      <p>Actualités matérielles, suivi des versions Beta et astuces photographiques partagées en temps réel.</p>
+      <p>Actualités matérielles et logiciel, suivi des versions Beta partagées au fil de l'eau.</p>
     </section>
 
     <!-- EN-TÊTE DE SECTION AVEC LE BOUTON AJOUTER DÉDIÉ -->
@@ -643,24 +646,28 @@
     </div>
   </div>
 
-  <!-- BARRE FLOTTANTE DU BAS PERMANENTE (4 ONGLETS) -->
+  <!-- BARRE FLOTTANTE DU BAS (4 ONGLETS) TOUJOURS VISIBLE -->
   <div id="bottomNav" class="bottom-nav-container">
     <nav class="bottom-dock">
+      <!-- 1. ACCUEIL -->
       <button class="dock-tab active" data-target="home">
         <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
         <span>Accueil</span>
       </button>
 
+      <!-- 2. APPAREILS -->
       <button class="dock-tab" data-target="devices">
         <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
         <span>Appareils</span>
       </button>
 
+      <!-- 3. MISES À JOUR -->
       <button class="dock-tab" data-target="beta">
         <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
         <span>Mises à jour</span>
       </button>
 
+      <!-- 4. ASTUCES -->
       <button class="dock-tab" data-target="tips">
         <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
         <span>Astuces</span>
@@ -668,6 +675,7 @@
     </nav>
   </div>
 
+  <!-- SCRIPTS JAVASCRIPT -->
   <script>
     const SECRET_CODE = "Alpha";
 
@@ -678,12 +686,4 @@
         category: "devices",
         tag: "Matériel & Écosystème",
         title: "Bienvenue sur l'espace Pixel Phones & Watchs",
-        content: "Retrouvez ici les actualités, annonces officielles, comparatifs et retours d'expérience dédiés aux smartphones Pixel et aux montres connectées Pixel Watch de notre communauté.",
-        dateStr: "Dossier matériel"
-      },
-      {
-        id: "2",
-        category: "beta",
-        tag: "Suivi Logiciel",
-        title: "Espace des versions Beta d'Android",
-        content: "Suivi complet des versions trimestrielles (QPR
+        content: "Retrouvez ici les actualités, annonces officielles, dédiés aux smartphones Pix
