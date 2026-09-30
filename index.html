@@ -5,51 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Pixel Actu — Le Hub de la Communauté Google Pixel</title>
 
-  <!-- Polices Google : Plus Jakarta Sans (géométrique M3) & Roboto -->
+  <!-- Polices Google : Plus Jakarta Sans & Roboto -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================================ */
-    /* VARIABLES THEME MATERIAL 3 EXPRESSIVE HAUT CONTRASTE         */
+    /* VARIABLES THEME MATERIAL 3 EXPRESSIVE ORIGINEL               */
     /* ============================================================ */
     :root[data-theme="dark"] {
       --bg-color: #0b0f14;
       --text-main: #f1f5f9;
       --text-muted: #94a3b8;
 
-      /* Barre supérieure translucide */
-      --nav-bg: rgba(18, 24, 34, 0.78);
-      --nav-border: rgba(255, 255, 255, 0.14);
-      --nav-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
-      --nav-shadow: 0 14px 34px -4px rgba(0, 0, 0, 0.6), 0 4px 12px -2px rgba(0, 0, 0, 0.4);
+      /* Barre supérieure translucide (M3 Expressive doux) */
+      --nav-bg: rgba(18, 24, 34, 0.65);
+      --nav-border: rgba(255, 255, 255, 0.12);
+      --nav-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+      --nav-shadow: 0 14px 34px -4px rgba(0, 0, 0, 0.45);
 
-      /* Barre basse (Mobile Dock) - Haute Visibilité & Relief */
-      --bottom-dock-bg: rgba(20, 26, 36, 0.90);
-      --bottom-dock-border: rgba(255, 255, 255, 0.22);
-      --bottom-dock-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
-      --bottom-dock-shadow: 0 18px 42px rgba(0, 0, 0, 0.75), 0 6px 16px rgba(0, 0, 0, 0.5);
-      --dock-tab-active-bg: rgba(168, 199, 250, 0.24);
+      /* Barre basse (Mobile Dock) - Translucidité douce originelle */
+      --bottom-dock-bg: rgba(20, 26, 36, 0.68);
+      --bottom-dock-border: rgba(255, 255, 255, 0.12);
+      --bottom-dock-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+      --bottom-dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+      --dock-tab-active-bg: rgba(168, 199, 250, 0.18);
       --dock-tab-active-color: #a8c7fa;
-      --dock-tab-inactive-color: #cbd5e1;
+      --dock-tab-inactive-color: #94a3b8;
 
       /* Accents & Boutons */
       --primary: #a8c7fa;
       --on-primary: #042f5c;
-      --icon-hover-bg: rgba(255, 255, 255, 0.12);
+      --icon-hover-bg: rgba(255, 255, 255, 0.08);
 
       /* Cartes & Surfaces */
-      --card-bg: rgba(21, 28, 38, 0.65);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --card-hover-border: rgba(168, 199, 250, 0.45);
-      --card-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
-      --tag-bg: rgba(168, 199, 250, 0.16);
+      --card-bg: rgba(21, 28, 38, 0.58);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(168, 199, 250, 0.35);
+      --card-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+      --tag-bg: rgba(168, 199, 250, 0.14);
 
       /* Halos d'ambiance Google Monet */
-      --glow-1: radial-gradient(circle 650px at 50% -10%, rgba(66, 133, 244, 0.22), transparent 75%);
-      --glow-2: radial-gradient(circle 500px at 90% 18%, rgba(52, 168, 83, 0.14), transparent 70%);
-      --glow-3: radial-gradient(circle 600px at 70% 85%, rgba(251, 188, 5, 0.09), transparent 75%);
+      --glow-1: radial-gradient(circle 650px at 50% -10%, rgba(66, 133, 244, 0.18), transparent 75%);
+      --glow-2: radial-gradient(circle 500px at 90% 18%, rgba(52, 168, 83, 0.12), transparent 70%);
+      --glow-3: radial-gradient(circle 600px at 70% 85%, rgba(251, 188, 5, 0.08), transparent 75%);
     }
 
     :root[data-theme="light"] {
@@ -57,46 +57,46 @@
       --text-main: #0f172a;
       --text-muted: #475569;
 
-      /* Barre supérieure translucide */
-      --nav-bg: rgba(255, 255, 255, 0.88);
-      --nav-border: rgba(0, 0, 0, 0.1);
-      --nav-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.98);
-      --nav-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.06);
+      /* Barre supérieure translucide (Light) */
+      --nav-bg: rgba(255, 255, 255, 0.72);
+      --nav-border: rgba(0, 0, 0, 0.08);
+      --nav-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+      --nav-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 
-      /* Barre basse (Mobile Dock) - Haute Visibilité & Relief */
-      --bottom-dock-bg: rgba(255, 255, 255, 0.94);
-      --bottom-dock-border: rgba(0, 0, 0, 0.14);
-      --bottom-dock-specular: inset 0 1px 0 0 rgba(255, 255, 255, 1);
-      --bottom-dock-shadow: 0 16px 36px rgba(15, 23, 42, 0.18), 0 6px 14px rgba(15, 23, 42, 0.08);
-      --dock-tab-active-bg: rgba(0, 90, 193, 0.14);
+      /* Barre basse (Mobile Dock) - Translucidité douce originelle */
+      --bottom-dock-bg: rgba(255, 255, 255, 0.75);
+      --bottom-dock-border: rgba(0, 0, 0, 0.08);
+      --bottom-dock-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+      --bottom-dock-shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
+      --dock-tab-active-bg: rgba(0, 90, 193, 0.12);
       --dock-tab-active-color: #005ac1;
-      --dock-tab-inactive-color: #334155;
+      --dock-tab-inactive-color: #64748b;
 
       /* Accents & Boutons */
       --primary: #005ac1;
       --on-primary: #ffffff;
-      --icon-hover-bg: rgba(0, 0, 0, 0.08);
+      --icon-hover-bg: rgba(0, 0, 0, 0.06);
 
       /* Cartes & Surfaces */
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --card-border: rgba(0, 0, 0, 0.08);
-      --card-hover-border: rgba(0, 90, 193, 0.4);
-      --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
-      --tag-bg: rgba(0, 90, 193, 0.12);
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --card-border: rgba(0, 0, 0, 0.06);
+      --card-hover-border: rgba(0, 90, 193, 0.3);
+      --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      --tag-bg: rgba(0, 90, 193, 0.1);
 
       /* Halos d'ambiance Google Monet (Light) */
-      --glow-1: radial-gradient(circle 650px at 50% -10%, rgba(66, 133, 244, 0.12), transparent 75%);
-      --glow-2: radial-gradient(circle 500px at 90% 18%, rgba(52, 168, 83, 0.08), transparent 70%);
-      --glow-3: radial-gradient(circle 600px at 70% 85%, rgba(251, 188, 5, 0.06), transparent 75%);
+      --glow-1: radial-gradient(circle 650px at 50% -10%, rgba(66, 133, 244, 0.1), transparent 75%);
+      --glow-2: radial-gradient(circle 500px at 90% 18%, rgba(52, 168, 83, 0.07), transparent 70%);
+      --glow-3: radial-gradient(circle 600px at 70% 85%, rgba(251, 188, 5, 0.05), transparent 75%);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1), 
-                  color 0.3s cubic-bezier(0.2, 0, 0, 1),
-                  border-color 0.3s cubic-bezier(0.2, 0, 0, 1);
+      transition: background-color 0.25s cubic-bezier(0.2, 0, 0, 1), 
+                  color 0.25s cubic-bezier(0.2, 0, 0, 1),
+                  border-color 0.25s cubic-bezier(0.2, 0, 0, 1);
     }
 
     body {
@@ -108,7 +108,7 @@
       overflow-x: hidden;
       display: flex;
       flex-direction: column;
-      padding-bottom: calc(105px + env(safe-area-inset-bottom, 0px));
+      padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
     }
 
     /* Arrière-plan ambiant dynamique */
@@ -140,17 +140,17 @@
     .floating-top-nav {
       pointer-events: auto;
       width: 100%;
-      max-width: 860px;
+      max-width: 840px;
       background: var(--nav-bg);
-      backdrop-filter: blur(28px) saturate(210%);
-      -webkit-backdrop-filter: blur(28px) saturate(210%);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
       border: 1px solid var(--nav-border);
       border-radius: 9999px;
-      padding: 8px 18px;
+      padding: 8px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       box-shadow: var(--nav-shadow), var(--nav-specular);
     }
 
@@ -182,18 +182,18 @@
       position: absolute;
       top: -1px;
       right: -1px;
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--primary);
-      box-shadow: 0 0 8px var(--primary);
+      box-shadow: 0 0 6px var(--primary);
       border: 2px solid var(--bg-color);
     }
 
     .logo-text {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 800;
-      font-size: 1.2rem;
+      font-size: 1.18rem;
       letter-spacing: -0.3px;
       color: var(--text-main);
     }
@@ -205,7 +205,7 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     /* Commutateur de Thème */
@@ -229,8 +229,8 @@
     }
 
     .theme-toggle-btn svg {
-      width: 20px;
-      height: 20px;
+      width: 19px;
+      height: 19px;
       fill: currentColor;
     }
 
@@ -269,11 +269,11 @@
     }
 
     /* ============================================================ */
-    /* NOUVELLE BARRE BASSE FLOTTANTE RENFORCÉE (MOBILE DOCK)       */
+    /* BARRE BASSE FLOTTANTE COMPACTE & CENTRÉE                    */
     /* ============================================================ */
     .floating-bottom-nav-wrapper {
       position: fixed;
-      bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+      bottom: calc(18px + env(safe-area-inset-bottom, 0px));
       left: 0;
       right: 0;
       z-index: 120;
@@ -281,56 +281,61 @@
       display: flex;
       justify-content: center;
       pointer-events: none;
-      transition: transform 0.42s cubic-bezier(0.2, 0, 0, 1), opacity 0.35s ease;
+      transition: transform 0.35s cubic-bezier(0.2, 0, 0, 1), opacity 0.3s ease;
       transform: translateY(0);
       opacity: 1;
     }
 
-    /* Dissimulation intelligente au défilement vers le bas */
     .floating-bottom-nav-wrapper.nav-hidden {
-      transform: translateY(145%);
+      transform: translateY(140%);
       opacity: 0;
     }
 
     .floating-bottom-dock {
       pointer-events: auto;
-      width: auto;
-      max-width: 480px;
+      width: fit-content;
       background: var(--bottom-dock-bg);
-      backdrop-filter: blur(32px) saturate(210%);
-      -webkit-backdrop-filter: blur(32px) saturate(210%);
-      border: 1.5px solid var(--bottom-dock-border);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--bottom-dock-border);
       border-radius: 9999px;
-      padding: 6px 8px;
+      padding: 6px 10px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       box-shadow: var(--bottom-dock-shadow), var(--bottom-dock-specular);
+      margin: 0 auto;
     }
 
     .dock-tab {
       border: none;
       background: transparent;
-      padding: 8px 14px;
+      padding: 6px 14px;
       border-radius: 9999px;
       cursor: pointer;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 3px;
+      min-width: 78px;
       color: var(--dock-tab-inactive-color);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 700;
-      white-space: nowrap;
-      transition: all 0.22s cubic-bezier(0.2, 0, 0, 1);
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
     }
 
     .dock-tab svg {
-      width: 17px;
-      height: 17px;
+      width: 18px;
+      height: 18px;
       fill: currentColor;
       flex-shrink: 0;
-      transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .dock-tab span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
     }
 
     .dock-tab:hover {
@@ -338,20 +343,13 @@
       background: var(--icon-hover-bg);
     }
 
-    /* État Onglet Actif en Pilule Contrastée */
     .dock-tab.active {
       background: var(--dock-tab-active-bg);
       color: var(--dock-tab-active-color);
-      box-shadow: inset 0 0 0 1px rgba(168, 199, 250, 0.35);
-    }
-
-    [data-theme="light"] .dock-tab.active {
-      box-shadow: inset 0 0 0 1px rgba(0, 90, 193, 0.25);
     }
 
     .dock-tab.active svg {
       fill: var(--dock-tab-active-color);
-      transform: scale(1.12);
     }
 
     /* ============================================================ */
@@ -361,20 +359,20 @@
       position: relative;
       z-index: 10;
       flex: 1;
-      max-width: 860px;
+      max-width: 840px;
       width: 100%;
-      margin: 32px auto 40px;
-      padding: 0 20px;
+      margin: 28px auto 40px;
+      padding: 0 16px;
     }
 
     .hero-banner {
       background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border: 1px solid var(--card-border);
-      border-radius: 32px;
-      padding: 38px 28px;
-      margin-bottom: 30px;
+      border-radius: 28px;
+      padding: 34px 24px;
+      margin-bottom: 28px;
       box-shadow: var(--card-shadow);
       text-align: center;
     }
@@ -382,74 +380,79 @@
     .hero-pill-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 5px 14px;
+      gap: 6px;
+      padding: 5px 12px;
       border-radius: 9999px;
       background: var(--tag-bg);
       color: var(--primary);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .hero-pill-badge span.pulse-dot {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: var(--primary);
-      box-shadow: 0 0 6px var(--primary);
+      box-shadow: 0 0 5px var(--primary);
     }
 
     .hero-banner h1 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 2.1rem;
+      font-size: 1.85rem;
       font-weight: 800;
       line-height: 1.25;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.3px;
       margin-bottom: 10px;
       color: var(--text-main);
     }
 
     .hero-banner p {
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 0.98rem;
       line-height: 1.6;
-      max-width: 600px;
+      max-width: 580px;
       margin: 0 auto;
     }
 
     .section-header {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
+      flex-direction: column;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
       border-bottom: 1px solid var(--card-border);
     }
 
     .section-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 800;
       color: var(--text-main);
       letter-spacing: -0.3px;
     }
 
+    .section-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
     .articles-feed {
       display: grid;
-      gap: 20px;
+      gap: 18px;
     }
 
     .article-card {
       background: var(--card-bg);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
-      border-radius: 26px;
-      padding: 26px;
+      border-radius: 24px;
+      padding: 24px;
       box-shadow: var(--card-shadow);
-      transition: border-color 0.25s, transform 0.25s cubic-bezier(0.2, 0, 0, 1);
+      transition: border-color 0.25s, transform 0.2s cubic-bezier(0.2, 0, 0, 1);
     }
 
     .article-card:hover {
@@ -462,36 +465,36 @@
       background: var(--tag-bg);
       color: var(--primary);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      padding: 4px 12px;
+      padding: 4px 10px;
       border-radius: 9999px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       letter-spacing: 0.3px;
       text-transform: uppercase;
     }
 
     .article-card h2 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: var(--text-main);
       line-height: 1.35;
     }
 
     .article-card p {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 18px;
+      font-size: 0.94rem;
+      margin-bottom: 16px;
       line-height: 1.6;
     }
 
     .card-meta {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       border-top: 1px solid var(--card-border);
-      padding-top: 14px;
+      padding-top: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -501,57 +504,19 @@
       position: relative;
       z-index: 10;
       text-align: center;
-      padding: 30px 20px 10px;
+      padding: 24px 20px 10px;
       color: var(--text-muted);
       font-size: 0.82rem;
     }
 
-    /* ============================================================ */
-    /* AJUSTEMENTS MOBILES CRITIQUES                                */
-    /* ============================================================ */
     @media (max-width: 600px) {
-      .floating-top-nav { padding: 6px 14px; }
+      .floating-top-nav { padding: 6px 12px; }
       .logo-text { font-size: 1.05rem; }
       .btn-fb span { display: none; }
-      .btn-fb { padding: 8px 10px; }
+      .btn-fb { padding: 8px 10px; border-radius: 50%; }
       .hero-banner { padding: 26px 18px; border-radius: 22px; }
       .hero-banner h1 { font-size: 1.6rem; }
-      
-      /* Optimisation Mobile Dock : capsule compacte parfaitement centrée sans étalement */
-      .floating-bottom-nav-wrapper {
-        padding: 0 16px;
-        bottom: calc(14px + env(safe-area-inset-bottom, 0px));
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        left: 0;
-        right: 0;
-      }
-
-      .floating-bottom-dock {
-        width: fit-content;
-        max-width: calc(100vw - 32px);
-        margin: 0 auto;
-        justify-content: center;
-        padding: 5px 6px;
-        gap: 4px;
-        border-radius: 9999px;
-      }
-
-      .dock-tab {
-        padding: 7px 11px;
-        font-size: 0.72rem;
-        gap: 5px;
-        flex: 0 1 auto;
-        justify-content: center;
-        border-radius: 9999px;
-      }
-
-      .dock-tab svg {
-        width: 15px;
-        height: 15px;
-      }
+      .dock-tab { min-width: 70px; padding: 6px 10px; }
     }
   </style>
 </head>
@@ -584,7 +549,7 @@
         </button>
 
         <!-- Bouton Groupe Facebook -->
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="btn-fb">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="btn-fb" aria-label="Rejoindre le Groupe Facebook">
           <svg viewBox="0 0 24 24">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
           </svg>
@@ -607,12 +572,12 @@
 
     <div class="section-header">
       <h2 id="currentCategoryTitle" class="section-title">Pixel Phones & Watchs</h2>
-      <span id="currentCategorySub" style="font-size: 0.82rem; color: var(--text-muted);">Toutes les nouveautés</span>
+      <span id="currentCategorySub" class="section-sub">Appareils, nouveautés matérielles et comparatifs</span>
     </div>
 
     <section class="articles-feed" id="articlesFeed">
       
-      <!-- Onglet 1 : Phones & Watchs -->
+      <!-- Onglet 1 : Appareils -->
       <article class="article-card" data-category="hardware">
         <span class="tag-badge">Matériel & Écosystème</span>
         <h2>Bienvenue sur l'espace Pixel Phones & Watchs</h2>
@@ -624,7 +589,7 @@
       </article>
 
       <!-- Onglet 2 : Mises à jour Beta -->
-      <article class="article-card" data-category="updates">
+      <article class="article-card" data-category="updates" style="display: none;">
         <span class="tag-badge">Android & Beta</span>
         <h2>Suivi des versions logicielles et programmes Beta</h2>
         <p>Retrouvez les résumés des versions Beta d'Android, les déploiements des correctifs mensuels de sécurité et les nouveautés des Pixel Feature Drops dès leur sortie officielle.</p>
@@ -634,8 +599,8 @@
         </div>
       </article>
 
-      <!-- Onglet 3 : Astuce du jour -->
-      <article class="article-card" data-category="tips">
+      <!-- Onglet 3 : Astuces -->
+      <article class="article-card" data-category="tips" style="display: none;">
         <span class="tag-badge">Astuce du jour</span>
         <h2>Maîtriser les fonctionnalités exclusives de votre Pixel</h2>
         <p>Découvrez nos astuces pratiques : optimiser l'autonomie de la batterie adaptative, réussir vos poses en Astrophotographie ou paramétrer les gestes rapides au quotidien.</p>
@@ -648,7 +613,7 @@
     </section>
   </main>
 
-  <!-- BARRE FLOTTANTE INFÉRIEURE ULTRA-VISIBLE SUR MOBILE -->
+  <!-- BARRE FLOTTANTE DU BAS : M3 ORIGINEL, CENTRÉE & COMPACTE -->
   <div class="floating-bottom-nav-wrapper" id="bottomNavWrapper">
     <nav class="floating-bottom-dock" aria-label="Navigation par catégories">
       
@@ -657,7 +622,7 @@
         <svg viewBox="0 0 24 24">
           <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14zm-4.2-15.5h-1.6c-.28 0-.5.22-.5.5s.22.5.5.5h1.6c.28 0 .5-.22.5-.5s-.22-.5-.5-.5z"/>
         </svg>
-        <span>Phones & Watchs</span>
+        <span>Appareils</span>
       </button>
 
       <!-- Onglet 2 -->
@@ -665,7 +630,7 @@
         <svg viewBox="0 0 24 24">
           <path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79s7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 2.49-.95 4.83-2.68 6.57-3.71 3.7-9.72 3.7-13.43 0s-3.71-9.69 0-13.39c3.71-3.7 9.72-3.7 13.43 0l2.68-2.76v7.6zM11.5 6.5v6.25l4.5 2.67-.75 1.23-5.25-3.15V6.5h1.5z"/>
         </svg>
-        <span>Mise à jour Beta</span>
+        <span>Mises à jour</span>
       </button>
 
       <!-- Onglet 3 -->
@@ -673,7 +638,7 @@
         <svg viewBox="0 0 24 24">
           <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/>
         </svg>
-        <span>Astuce du jour</span>
+        <span>Astuces</span>
       </button>
 
     </nav>
@@ -684,7 +649,7 @@
   </footer>
 
   <script>
-    /* 1. THÈME CLAIR / SOMBRE AVEC MÉMORISATION */
+    /* 1. THEME CLAIR / SOMBRE AVEC MEMORISATION */
     const themeToggle = document.getElementById('themeToggle');
     const root = document.documentElement;
 
@@ -704,7 +669,7 @@
       localStorage.setItem('pixel_actu_theme', newTheme);
     });
 
-    /* 2. DÉFILEMENT : CACHER EN DESCENDANT / RÉAPPARAÎTRE EN REMONTANT */
+    /* 2. DEFILEMENT : CACHER EN DESCENDANT / REAPPARAITRE EN REMONTANT */
     const bottomNavWrapper = document.getElementById('bottomNavWrapper');
     let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
     const scrollThreshold = 12;
@@ -723,7 +688,7 @@
       if (currentScrollY > lastScrollY + scrollThreshold) {
         bottomNavWrapper.classList.add('nav-hidden');
       } 
-      // Si l'utilisateur remonte (scroll up) -> réapparition
+      // Si l'utilisateur remonte (scroll up) -> re-apparition
       else if (currentScrollY < lastScrollY - scrollThreshold) {
         bottomNavWrapper.classList.remove('nav-hidden');
       }
