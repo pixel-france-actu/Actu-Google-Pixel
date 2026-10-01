@@ -1,0 +1,20 @@
+name: Notification Facebook
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify-facebook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vérifier le dépôt
+        uses: actions/checkout@v4
+
+      - name: Publier sur Facebook
+        run: |
+          curl -X POST "https://graph.facebook.com/v19.0/${{ secrets.FB_GROUP_ID }}/feed" \
+            -d "message=Un nouvel article est disponible sur Pixel Actu ! Venez le découvrir :" \
+            -d "link=https://pixel-france-actu.github.io/Actu-Google-Pixel/" \
+            -d "access_token=${{ secrets.FB_ACCESS_TOKEN }}"
