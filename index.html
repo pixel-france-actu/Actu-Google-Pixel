@@ -931,7 +931,7 @@ async function loadRSSFeed() {
   if (!rssList) return;
 
   // Remplacez l'URL ci-dessous par le flux RSS de votre choix
-  const feedUrl = 'http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/';
+  const feedUrl = "http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/";
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
 
   try {
