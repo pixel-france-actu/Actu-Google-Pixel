@@ -402,22 +402,20 @@
     .dock-tab.active svg {
       fill: currentColor;
     }
-               /* Fond Accueil : Visuel Pixel 11 Pro */
+                   /* Fond Accueil : Dos Pixel 11 Pro Canyon */
     body[data-active-tab="home"],
     body:not([data-active-tab]) {
-      background-color: #0b0f14;
+      background-color: #1a0f0d;
       background-image: 
-        /* Voile assombrissant et halos lumineux pour préserver la lisibilité */
-        linear-gradient(rgba(11, 15, 20, 0.75), rgba(11, 15, 20, 0.85)),
-        radial-gradient(ellipse 70% 35% at 50% 15%, rgba(168, 199, 250, 0.25), transparent 70%),
-        /* URL du Pixel 11 Pro (ou chemin local images/pixel-11-pro.jpg) */
-        url('https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1920&q=80');
+        /* Voile sombre cuivré pour garder le texte parfaitement lisible */
+        linear-gradient(rgba(18, 10, 8, 0.78), rgba(18, 10, 8, 0.88)),
+        /* Lueur chaude assortie à la teinte Canyon */
+        radial-gradient(ellipse 70% 35% at 50% 15%, rgba(224, 122, 95, 0.25), transparent 70%),
+        /* Chemin vers ton image */
+        url('images/pixel-11-pro-canyon.jpg');
       background-position: center top;
       background-size: cover;
       background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-
       background-attachment: fixed;
     }
 
