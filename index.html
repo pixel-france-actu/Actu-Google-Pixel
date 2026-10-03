@@ -402,28 +402,22 @@
     .dock-tab.active svg {
       fill: currentColor;
     }
-            /* Fond Accueil : Effet Barre Highlight Pixel 11 Pro visible */
+               /* Fond Accueil : Visuel Pixel 11 Pro */
     body[data-active-tab="home"],
     body:not([data-active-tab]) {
       background-color: #0b0f14;
       background-image: 
-        /* 1. Lueur cyan/bleue intense centrée derrière le haut */
-        radial-gradient(circle 800px at 50% 120px, rgba(168, 199, 250, 0.35), transparent 70%),
-        /* 2. Lueur d'accentuation métallique */
-        radial-gradient(ellipse 60% 20% at 50% 80px, rgba(124, 172, 248, 0.45), transparent 60%),
-        /* 3. La barre horizontale biseautée brillante (effet visière caméra) */
-        linear-gradient(
-          to bottom,
-          transparent 0px,
-          transparent 60px,
-          rgba(255, 255, 255, 0.6) 61px,       /* Ligne de reflet éclatante supérieure */
-          rgba(168, 199, 250, 0.25) 63px,
-          rgba(18, 24, 38, 0.95) 66px,         /* Corps de la barre */
-          rgba(10, 14, 22, 0.98) 125px,
-          rgba(168, 199, 250, 0.3) 126px,
-          rgba(255, 255, 255, 0.25) 128px,     /* Arête de reflet inférieure */
-          transparent 130px
-        );
+        /* Voile assombrissant et halos lumineux pour préserver la lisibilité */
+        linear-gradient(rgba(11, 15, 20, 0.75), rgba(11, 15, 20, 0.85)),
+        radial-gradient(ellipse 70% 35% at 50% 15%, rgba(168, 199, 250, 0.25), transparent 70%),
+        /* URL du Pixel 11 Pro (ou chemin local images/pixel-11-pro.jpg) */
+        url('https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1920&q=80');
+      background-position: center top;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
       background-attachment: fixed;
     }
 
