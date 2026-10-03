@@ -402,29 +402,91 @@
     .dock-tab.active svg {
       fill: currentColor;
     }
-                       /* Fond Accueil : Teinte & Barrette Pixel 11 Pro Canyon */
+                       /* ============================================================
+       FONDS D'ÉCRAN CATÉGORIES : SÉRIE PIXEL 11 PRO (100% CSS)
+       ============================================================ */
+
+    /* 1. ACCUEIL : Coloris CANYON (Terracotta cuivré) */
     body[data-active-tab="home"],
     body:not([data-active-tab]) {
       background-color: #1a0e0b;
       background-image: 
-        /* Reflet doux cuivré Canyon */
         radial-gradient(circle 750px at 50% 90px, rgba(226, 125, 96, 0.35), transparent 65%),
         radial-gradient(ellipse 65% 25% at 50% 120px, rgba(199, 91, 63, 0.28), transparent 70%),
-        /* Visière caméra arrière métallique */
         linear-gradient(
           to bottom,
           transparent 0px,
           transparent 55px,
           rgba(244, 162, 138, 0.55) 56px,    /* Arête supérieure cuivrée */
-          rgba(35, 20, 18, 0.95) 59px,       /* Bloc caméra sombre */
+          rgba(35, 20, 18, 0.95) 59px,       /* Visière caméra sombre */
           rgba(20, 12, 10, 0.98) 120px,
           rgba(244, 162, 138, 0.35) 122px,   /* Arête inférieure */
           transparent 124px
         ),
-        /* Texture satinée du dos mat */
         linear-gradient(180deg, #1c0e0b 0%, #120907 100%);
       background-attachment: fixed;
     }
+
+    /* 2. APPAREILS : Coloris OBSIDIENNE (Noir titane & reflets graphite) */
+    body[data-active-tab="devices"] {
+      background-color: #0d0f12;
+      background-image: 
+        radial-gradient(circle 750px at 50% 90px, rgba(148, 163, 184, 0.22), transparent 65%),
+        radial-gradient(ellipse 65% 25% at 50% 120px, rgba(71, 85, 105, 0.30), transparent 70%),
+        linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 55px,
+          rgba(255, 255, 255, 0.40) 56px,    /* Arête titane brossé */
+          rgba(15, 18, 24, 0.97) 59px,       /* Visière noir profond */
+          rgba(8, 10, 14, 0.99) 120px,
+          rgba(148, 163, 184, 0.25) 122px,   /* Biseau inférieur graphite */
+          transparent 124px
+        ),
+        linear-gradient(180deg, #111418 0%, #090b0d 100%);
+      background-attachment: fixed;
+    }
+
+    /* 3. MISES À JOUR : Coloris PORCELAINE (Blanc nacré & aluminium satiné) */
+    body[data-active-tab="beta"] {
+      background-color: #16181d;
+      background-image: 
+        radial-gradient(circle 750px at 50% 90px, rgba(230, 235, 245, 0.28), transparent 65%),
+        radial-gradient(ellipse 65% 25% at 50% 120px, rgba(186, 196, 210, 0.22), transparent 70%),
+        linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 55px,
+          rgba(255, 255, 255, 0.65) 56px,    /* Arête chrome argenté vif */
+          rgba(28, 32, 40, 0.95) 59px,       /* Visière porcelaine polie */
+          rgba(18, 21, 26, 0.98) 120px,
+          rgba(255, 255, 255, 0.35) 122px,   /* Arête inférieure */
+          transparent 124px
+        ),
+        linear-gradient(180deg, #191c22 0%, #0e1014 100%);
+      background-attachment: fixed;
+    }
+
+    /* 4. ASTUCES : Coloris NOISETTE / HAZEL (Vert sauge doux & reflets bronze) */
+    body[data-active-tab="tips"] {
+      background-color: #0f1614;
+      background-image: 
+        radial-gradient(circle 750px at 50% 90px, rgba(134, 162, 147, 0.30), transparent 65%),
+        radial-gradient(ellipse 65% 25% at 50% 120px, rgba(163, 145, 116, 0.24), transparent 70%),
+        linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 55px,
+          rgba(212, 193, 156, 0.50) 56px,    /* Arête aux nuances bronze / champagne */
+          rgba(20, 30, 26, 0.95) 59px,       /* Visière vert sauge sombre */
+          rgba(12, 20, 17, 0.98) 120px,
+          rgba(212, 193, 156, 0.30) 122px,   /* Arête inférieure */
+          transparent 124px
+        ),
+        linear-gradient(180deg, #121c19 0%, #09100e 100%);
+      background-attachment: fixed;
+    }
+
 
 
 
