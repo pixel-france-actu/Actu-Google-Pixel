@@ -402,22 +402,30 @@
     .dock-tab.active svg {
       fill: currentColor;
     }
-                   /* Fond Accueil : Dos Pixel 11 Pro Canyon */
+                       /* Fond Accueil : Teinte & Barrette Pixel 11 Pro Canyon */
     body[data-active-tab="home"],
     body:not([data-active-tab]) {
-      background-color: #1a0f0d;
+      background-color: #1a0e0b;
       background-image: 
-        /* Voile sombre cuivré pour garder le texte parfaitement lisible */
-        linear-gradient(rgba(18, 10, 8, 0.78), rgba(18, 10, 8, 0.88)),
-        /* Lueur chaude assortie à la teinte Canyon */
-        radial-gradient(ellipse 70% 35% at 50% 15%, rgba(224, 122, 95, 0.25), transparent 70%),
-        /* Chemin vers ton image */
-        url('images/pixel-11-pro-canyon.jpg');
-      background-position: center top;
-      background-size: cover;
-      background-repeat: no-repeat;
+        /* Reflet doux cuivré Canyon */
+        radial-gradient(circle 750px at 50% 90px, rgba(226, 125, 96, 0.35), transparent 65%),
+        radial-gradient(ellipse 65% 25% at 50% 120px, rgba(199, 91, 63, 0.28), transparent 70%),
+        /* Visière caméra arrière métallique */
+        linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 55px,
+          rgba(244, 162, 138, 0.55) 56px,    /* Arête supérieure cuivrée */
+          rgba(35, 20, 18, 0.95) 59px,       /* Bloc caméra sombre */
+          rgba(20, 12, 10, 0.98) 120px,
+          rgba(244, 162, 138, 0.35) 122px,   /* Arête inférieure */
+          transparent 124px
+        ),
+        /* Texture satinée du dos mat */
+        linear-gradient(180deg, #1c0e0b 0%, #120907 100%);
       background-attachment: fixed;
     }
+
 
 
         /* ============================================================
