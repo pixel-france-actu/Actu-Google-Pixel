@@ -1060,6 +1060,8 @@
         const cat = tab.getAttribute('data-target');
         categoryTitle.textContent = metaInfo[cat].title;
         categoryDesc.textContent = metaInfo[cat].desc;
+                document.body.setAttribute('data-active-tab', cat);
+
 
                if (cat === 'home') {
       heroBanner.style.display = 'block';
