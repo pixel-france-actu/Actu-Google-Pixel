@@ -509,7 +509,7 @@
         radial-gradient(ellipse 65% 45% at 50% -12%, var(--glow-1), transparent 72%),
         url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1920&q=80');
     }
-/* 1. Titres principaux au-dessus des cartes (toujours blancs et nets) */
+/* Lisibilité et agrandissement des titres de catégories */
 #categoryTitle {
   color: #ffffff !important;
   font-size: 2.2rem !important;
@@ -526,7 +526,7 @@
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7) !important;
 }
 
-/* 2. MODE CLAIR : texte bien foncé sur carte claire */
+/* --- MODE CLAIR : texte foncé sur cartes claires --- */
 .article-card {
   color: #1f2937 !important;
 }
@@ -535,7 +535,6 @@
 .article-card p:first-of-type {
   color: #374151 !important;
   font-weight: 500 !important;
-  opacity: 1 !important;
 }
 .article-card p,
 .article-card li {
@@ -546,38 +545,48 @@
   color: #4b5563 !important;
 }
 
-/* 3. MODE SOMBRE : texte blanc / clair sur carte sombre */
-body[data-theme="dark"] .article-card,
-body.dark-mode .article-card {
-  color: #e5e7eb !important;
+/* --- MODE SOMBRE UNIVERSEL : texte blanc et gris clair sur cartes sombres --- */
+[data-theme="dark"] .article-card,
+.dark-mode .article-card,
+.dark .article-card,
+html[data-theme="dark"] .article-card,
+body[data-theme="dark"] .article-card {
+  color: #f1f5f9 !important;
 }
-body[data-theme="dark"] .article-card .lead,
-body[data-theme="dark"] .article-card p.lead,
-body[data-theme="dark"] .article-card p:first-of-type,
-body.dark-mode .article-card .lead,
-body.dark-mode .article-card p.lead,
-body.dark-mode .article-card p:first-of-type {
-  color: #e2e8f0 !important; /* Blanc doux lisible */
-  font-weight: 500 !important;
+
+[data-theme="dark"] .article-card p,
+[data-theme="dark"] .article-card li,
+[data-theme="dark"] .article-card span,
+.dark-mode .article-card p,
+.dark-mode .article-card li,
+.dark-mode .article-card span,
+.dark .article-card p,
+.dark .article-card li,
+.dark .article-card span {
+  color: #e2e8f0 !important;
 }
-body[data-theme="dark"] .article-card p,
-body[data-theme="dark"] .article-card li,
-body.dark-mode .article-card p,
-body.dark-mode .article-card li {
-  color: #cbd5e1 !important; /* Gris clair très lisible */
-}
-body[data-theme="dark"] .article-card h2,
-body[data-theme="dark"] .article-card h3,
-body.dark-mode .article-card h2,
-body.dark-mode .article-card h3 {
+
+[data-theme="dark"] .article-card h2,
+[data-theme="dark"] .article-card h3,
+[data-theme="dark"] .article-card strong,
+.dark-mode .article-card h2,
+.dark-mode .article-card h3,
+.dark-mode .article-card strong,
+.dark .article-card h2,
+.dark .article-card h3,
+.dark .article-card strong {
   color: #ffffff !important;
 }
-body[data-theme="dark"] .article-card em,
-body[data-theme="dark"] .article-card i,
-body.dark-mode .article-card em,
-body.dark-mode .article-card i {
-  color: #94a3b8 !important;
+
+[data-theme="dark"] .article-card em,
+[data-theme="dark"] .article-card i,
+.dark-mode .article-card em,
+.dark-mode .article-card i,
+.dark .article-card em,
+.dark .article-card i {
+  color: #cbd5e1 !important;
 }
+
 
 
 
