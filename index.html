@@ -509,10 +509,10 @@
         radial-gradient(ellipse 65% 45% at 50% -12%, var(--glow-1), transparent 72%),
         url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1920&q=80');
     }
-/* Lisibilité et agrandissement des titres de catégories */
+/* 1. Titres principaux au-dessus des cartes (toujours blancs et nets) */
 #categoryTitle {
   color: #ffffff !important;
-  font-size: 2.2rem !important; /* Taille agrandie pour le titre */
+  font-size: 2.2rem !important;
   font-weight: 800 !important;
   line-height: 1.2 !important;
   margin-bottom: 6px !important;
@@ -521,31 +521,64 @@
 
 #categoryDesc {
   color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 1.15rem !important; /* Sous-titre plus grand et plus net */
+  font-size: 1.15rem !important;
   font-weight: 500 !important;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7) !important;
 }
-/* Lisibilité du texte d'introduction et des sous-titres dans les cartes */
+
+/* 2. MODE CLAIR : texte bien foncé sur carte claire */
+.article-card {
+  color: #1f2937 !important;
+}
 .article-card .lead,
 .article-card p.lead,
-.article-card .card-subtitle,
 .article-card p:first-of-type {
-  color: #374151 !important; /* Gris anthracite foncé très lisible */
+  color: #374151 !important;
   font-weight: 500 !important;
   opacity: 1 !important;
 }
-
-/* Texte secondaire et notes en bas de carte */
 .article-card p,
 .article-card li {
-  color: #1f2937 !important; /* Texte bien net */
+  color: #1f2937 !important;
 }
-
-/* Texte en italique d'aide en bas de carte */
 .article-card em,
 .article-card i {
   color: #4b5563 !important;
 }
+
+/* 3. MODE SOMBRE : texte blanc / clair sur carte sombre */
+body[data-theme="dark"] .article-card,
+body.dark-mode .article-card {
+  color: #e5e7eb !important;
+}
+body[data-theme="dark"] .article-card .lead,
+body[data-theme="dark"] .article-card p.lead,
+body[data-theme="dark"] .article-card p:first-of-type,
+body.dark-mode .article-card .lead,
+body.dark-mode .article-card p.lead,
+body.dark-mode .article-card p:first-of-type {
+  color: #e2e8f0 !important; /* Blanc doux lisible */
+  font-weight: 500 !important;
+}
+body[data-theme="dark"] .article-card p,
+body[data-theme="dark"] .article-card li,
+body.dark-mode .article-card p,
+body.dark-mode .article-card li {
+  color: #cbd5e1 !important; /* Gris clair très lisible */
+}
+body[data-theme="dark"] .article-card h2,
+body[data-theme="dark"] .article-card h3,
+body.dark-mode .article-card h2,
+body.dark-mode .article-card h3 {
+  color: #ffffff !important;
+}
+body[data-theme="dark"] .article-card em,
+body[data-theme="dark"] .article-card i,
+body.dark-mode .article-card em,
+body.dark-mode .article-card i {
+  color: #94a3b8 !important;
+}
+
 
 
   </style>
