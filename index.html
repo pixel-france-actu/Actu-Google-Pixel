@@ -586,46 +586,50 @@ body[data-theme="dark"] .article-card {
 .dark .article-card i {
   color: #cbd5e1 !important;
 }
-/* --- Surlignage Canyon (Pixel 11 Pro) - Mode Clair --- */
+/* --- Liens Canyon (Pixel 11 Pro) : texte pur, aucun cadre --- */
 .home-article-link {
-  display: inline-block;
-  text-decoration: none !important;
-  border-radius: 6px;
-  padding: 2px 6px;
-  background-color: rgba(200, 97, 66, 0.15) !important; /* Surlignage Canyon feutré */
-  border-bottom: 2px solid #c86142 !important; /* Ligne de surlignage accentuée */
-  transition: all 0.2s ease;
+  display: inline !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
 }
 
+/* Mode clair : terracotta Canyon bien contrasté */
+.home-article-link,
 .home-article-link strong {
-  color: #a84326 !important; /* Texte Canyon foncé pour un contraste optimal */
-  text-decoration: none !important;
+  color: #b84d2d !important;
+  text-decoration-color: #b84d2d !important;
 }
 
-.home-article-link:hover {
-  background-color: rgba(200, 97, 66, 0.25) !important;
+.home-article-link:hover,
+.home-article-link:hover strong {
+  color: #92381c !important;
+  text-decoration-color: #92381c !important;
 }
 
-/* --- Surlignage Canyon (Pixel 11 Pro) - Mode Sombre --- */
+/* Mode sombre : nuance cuivrée lumineuse */
 [data-theme="dark"] .home-article-link,
-.dark-mode .home-article-link,
-html[data-theme="dark"] .home-article-link,
-body[data-theme="dark"] .home-article-link {
-  background-color: rgba(240, 140, 110, 0.22) !important; /* Surlignage lumineux */
-  border-bottom: 2px solid #f08c6e !important;
-}
-
 [data-theme="dark"] .home-article-link strong,
+.dark-mode .home-article-link,
 .dark-mode .home-article-link strong,
+html[data-theme="dark"] .home-article-link,
 html[data-theme="dark"] .home-article-link strong,
+body[data-theme="dark"] .home-article-link,
 body[data-theme="dark"] .home-article-link strong {
-  color: #ffaa90 !important; /* Cuivre éclatant ultra lisible sur fond sombre */
+  color: #f28b6d !important;
+  text-decoration-color: #f28b6d !important;
 }
 
 [data-theme="dark"] .home-article-link:hover,
-.dark-mode .home-article-link:hover {
-  background-color: rgba(240, 140, 110, 0.35) !important;
+[data-theme="dark"] .home-article-link:hover strong,
+.dark-mode .home-article-link:hover,
+.dark-mode .home-article-link:hover strong {
+  color: #ffaa90 !important;
+  text-decoration-color: #ffaa90 !important;
 }
+
 
 
 
