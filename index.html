@@ -653,6 +653,8 @@ body[data-theme="dark"] .article-card {
 
         <h3 class="section-title">En direct aujourd'hui :</h3>
         <ul>
+          <div id="latestArticlesContainer" style="margin-top: 14px;"></div>
+
           <li><strong>Mises à jour :</strong> Déploiement accéléré des dernières builds QPR avec des correctifs de stabilité majeurs.</li>
           <li id="rss-container">
   <strong>Actualités en direct (RSS) :</strong>
@@ -1610,6 +1612,53 @@ articles.forEach(art => {
 
 // Lancement du flux RSS
 loadRSSFeed();
+
+      // --- Génération automatique des articles récents sur l'accueil ---
+  const container = document.getElementById("latestArticlesContainer");
+  if (container) {
+    const articles = Array.from(document.querySelectorAll("article.article-card:not([data-category='home'])"));
+    const latest = articles.slice(0, 4);
+
+    let html = '<ul style="list-style: none; padding-left: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">';
+
+    latest.forEach((art, index) => {
+      if (!art.id) art.id = "auto-article-" + index;
+
+      const titleEl = art.querySelector(".card-title, h2");
+      const tagEl = art.querySelector(".tag-badge");
+      const category = art.getAttribute("data-category") || "devices";
+
+      const titleText = titleEl ? titleEl.innerText : "Nouvel article";
+      const tagText = tagEl ? tagEl.innerText : "";
+
+      html += `
+        <li>
+          <a href="#${art.id}" onclick="goToArticle('${category}', '${art.id}'); return false;" class="home-article-link">
+            ${tagText ? `<span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; opacity: 0.7; display: block; margin-bottom: 2px;">${tagText}</span>` : ''}
+            <strong>${titleText}</strong>
+          </a>
+        </li>
+      `;
+    });
+
+    html += '</ul>';
+    container.innerHTML = html;
+  }
+
+  window.goToArticle = function(category, articleId) {
+    // Sélectionne et clique sur le bon onglet du dock (ex: data-target="devices")
+    const navBtn = document.querySelector(`.dock-tab[data-target="${category}"]`);
+    if (navBtn) {
+      navBtn.click();
+    }
+
+    setTimeout(() => {
+      const el = document.getElementById(articleId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 120);
+  };
 
 </script>
 
