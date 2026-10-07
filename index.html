@@ -1617,7 +1617,9 @@ loadRSSFeed();
       // --- Génération automatique des articles récents sur l'accueil ---
   const container = document.getElementById("latestArticlesContainer");
   if (container) {
-    const articles = Array.from(document.querySelectorAll("article.article-card:not([data-category='home'])"));
+    const articles = Array.from(document.querySelectorAll("article.article-card:not([data-category='home'])"))
+  .filter(art => !art.innerText.includes("Bienvenue sur l'espace"));
+
     const latest = articles.slice(0, 4);
 
     let html = '<ul style="list-style: none; padding-left: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">';
