@@ -852,12 +852,45 @@ body[data-theme="dark"] .home-article-link strong {
   }
 }
 
-/* Force la barre supérieure à être toujours au premier plan pour capter les clics */
+/* Barre du haut : au premier plan, sans aucun cadre blanc */
 .top-nav-bar {
   position: relative !important;
   z-index: 9999 !important;
   pointer-events: auto !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
+
+/* Typographie et icônes blanches éclatantes sur le fond */
+.top-nav-bar,
+.logo-text,
+.status-pill,
+.search-box input,
+.icon-btn {
+  color: #ffffff !important;
+}
+
+.search-icon,
+.icon-btn svg {
+  fill: #ffffff !important;
+}
+
+/* Éléments internes translucides discrets */
+.status-pill,
+.search-box,
+.icon-btn {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: none !important;
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
 
 /* S'assure que chaque élément interactif à l'intérieur est bien cliquable */
 .top-nav-bar input,
