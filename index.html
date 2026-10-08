@@ -2773,19 +2773,26 @@ loadRSSFeed();
     const articles = Array.from(document.querySelectorAll("article.article-card:not([data-category='home'])"))
   .filter(art => !art.innerText.includes("Bienvenue sur l'espace"));
 
-        // Sélectionne les articles du jour ou le plus récent par catégorie
+            // Affiche les articles du jour s'il y en a, complétés par les plus récents de chaque catégorie
     const categoriesWanted = ['beta', 'devices', 'tips'];
     let latest = [];
 
+    // 1. On prend tous les articles marqués comme publiés aujourd'hui
     const todayArticles = articles.filter(a => a.getAttribute('data-today') === 'true');
-    if (todayArticles.length > 0) {
-      latest = todayArticles.slice(0, 5);
-    } else {
-      categoriesWanted.forEach(cat => {
+    latest.push(...todayArticles);
+
+    // 2. Pour les catégories qui n'ont pas d'article "today", on ajoute leur article le plus récent
+    categoriesWanted.forEach(cat => {
+      const alreadyHasCat = latest.some(a => (a.getAttribute('data-category') || '').toLowerCase().trim() === cat);
+      if (!alreadyHasCat) {
         const found = articles.find(a => (a.getAttribute('data-category') || '').toLowerCase().trim() === cat);
         if (found) latest.push(found);
-      });
-    }
+      }
+    });
+
+    // On limite à 4 ou 5 articles au total dans la liste
+    latest = latest.slice(0, 5);
+
 
     let html = '<ul style="list-style: none; padding-left: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">';
 
