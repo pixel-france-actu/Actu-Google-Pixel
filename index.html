@@ -2662,7 +2662,46 @@ window.shareWebsite = async function() {
   }
 };
 
-    
+  /* --- COMPTEUR ET BADGES AUTOMATIQUES MATERIAL 3 (SOLUTION 1) --- */
+function updateNavBadges() {
+  // Catégories surveillées et leurs couleurs Pixel officielles
+  const categories = {
+    'mises-a-jour': { count: 0, color: '#e87a5a' }, // Accent Canyon / Terracotta
+    'appareils':    { count: 0, color: '#a8c7fa' }, // Bleu ciel Pixel System
+    'astuces':      { count: 0, color: '#6dd58c' }  // Vert menthe Pixel UI
+  };
+
+  // 1. Scan et comptage de tous les articles selon data-category
+  document.querySelectorAll('article.article-card').forEach(article => {
+    const cat = article.getAttribute('data-category');
+    if (categories[cat]) {
+      categories[cat].count++;
+    }
+  });
+
+  // 2. Injection automatique du badge sur chaque onglet
+  Object.keys(categories).forEach(catKey => {
+    // Détecte le bouton de la barre inférieure correspondant
+    const btn = document.querySelector(`.bottom-nav-btn[data-target="${catKey}"]`) || 
+                document.querySelector(`.bottom-nav-item[data-nav="${catKey}"]`) ||
+                document.querySelector(`[onclick*="${catKey}"]`);
+
+    if (btn && categories[catKey].count > 0) {
+      let badge = btn.querySelector('.m3-nav-badge');
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'm3-nav-badge';
+        btn.appendChild(badge);
+      }
+      badge.textContent = categories[catKey].count;
+      badge.style.backgroundColor = categories[catKey].color;
+    }
+  });
+}
+
+// Déclenchement automatique au chargement de la page
+window.addEventListener('DOMContentLoaded', updateNavBadges);
+  
 </script>
 
 
