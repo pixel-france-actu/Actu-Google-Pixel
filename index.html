@@ -1059,58 +1059,29 @@ body[data-theme="dark"] .icon-moon {
 
   <!-- BARRE SUPÉRIEURE -->
   <div class="top-nav-wrapper">
-    <header class="top-nav-bar">
-  <!-- 1. Logo à gauche -->
-  <div class="nav-left">
-    <div class="logo-pill">
-      <span class="logo-circle">P</span>
-      <span class="logo-text">Pixel Actu</span>
-    </div>
+   <header class="top-nav-bar">
+  <!-- Pilule gauche : Logo Pixel Actu -->
+  <div class="logo-pill">
+    <span class="logo-circle">P</span>
+    <span class="logo-text">Pixel Actu</span>
   </div>
 
-  <!-- 2. Centre : Badge de version & Barre de recherche Pixel -->
-  <div class="nav-center">
-    <!-- Badge Version / Canal (cliquable vers Mises à jour) -->
-    <button class="status-pill" onclick="goToTab('updates')" title="Voir les dernières mises à jour">
-      <span class="status-dot"></span>
-      <span class="status-text">Android 17 • Octobre 2026</span>
-    </button>
-
-    <!-- Champ de recherche Google Style -->
-    <div class="search-box">
-      <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18">
-        <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+  <!-- Pilule droite : Thème M3 Expressive + Facebook -->
+  <div class="header-actions">
+    <!-- Bouton Thème interactif M3 -->
+    <button id="themeToggle" class="icon-btn theme-toggle-btn" aria-label="Changer de thème">
+      <!-- Soleil (visible en mode sombre) -->
+      <svg class="theme-icon icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1z"/>
       </svg>
-      <input type="text" id="articleSearchInput" placeholder="Rechercher (ex: Tensor, Buds, 11...)" oninput="filterArticles(this.value)" />
-      <button id="clearSearchBtn" class="clear-search" onclick="clearSearch()" style="display: none;">✕</button>
-    </div>
-  </div>
-
-  <!-- 3. Droite : Thème, Partager, Facebook -->
-  <div class="nav-right">
-    <!-- Bouton Partager natif -->
-    <button class="icon-btn" onclick="shareWebsite()" title="Partager le site">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+      <!-- Lune (visible en mode clair) -->
+      <svg class="theme-icon icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M12.3 2a10 10 0 0 0-.19 20 10.04 10.04 0 0 0 9.89-8.48.5.5 0 0 0-.6-.58 7.5 7.5 0 0 1-8.52-8.52.5.5 0 0 0-.58-.6V2z"/>
       </svg>
     </button>
 
-    <!-- Bouton Thème Sombre / Clair existant -->
-    <<button id="themeToggle" class="icon-btn theme-toggle-btn" aria-label="Changer de thème" title="Basculer thème clair/sombre">
-  <!-- Icône Soleil (visible en mode sombre pour repasser en clair) -->
-  <svg class="theme-icon icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-    <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zm7.79-14.79l-1.41 1.41c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l1.41-1.41c.39-.39.39-1.02 0-1.41s-1.02-.39-1.41 0zM6.21 17.79l-1.41 1.41c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l1.41-1.41c.39-.39.39-1.02 0-1.41s-1.02-.39-1.41 0zM17.79 17.79c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l1.41 1.41c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41l-1.41-1.41zM6.21 6.21c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l1.41 1.41c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41L6.21 6.21z"/>
-  </svg>
-
-  <!-- Icône Lune (visible en mode clair pour passer en sombre) -->
-  <svg class="theme-icon icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-    <path d="M12.3 2a10 10 0 0 0-.19 20 10.04 10.04 0 0 0 9.89-8.48.5.5 0 0 0-.6-.58 7.5 7.5 0 0 1-8.52-8.52.5.5 0 0 0-.58-.6V2z"/>
-  </svg>
-</button>
-
-
-    <!-- Bouton Facebook existant -->
-    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Page Facebook">
+    <!-- Bouton Facebook -->
+    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="icon-btn facebook-btn" title="Facebook">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
       </svg>
