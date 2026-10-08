@@ -2064,7 +2064,61 @@ loadRSSFeed();
       }
     }, 120);
   };
+// 1. Navigation rapide vers l'onglet des Mises à jour
+function goToTab(targetCategory) {
+  const btn = document.querySelector(`.dock-tab[data-target="${targetCategory}"]`);
+  if (btn) btn.click();
+}
 
+// 2. Recherche en direct parmi tous les articles
+function filterArticles(query) {
+  const cleanQuery = query.toLowerCase().trim();
+  const clearBtn = document.getElementById("clearSearchBtn");
+  if (clearBtn) clearBtn.style.display = cleanQuery ? "block" : "none";
+
+  const cards = document.querySelectorAll("article.article-card");
+  
+  cards.forEach(card => {
+    // Ne jamais masquer la carte de bienvenue / accueil générale si la recherche est vide
+    if (card.getAttribute("data-category") === "home" && !cleanQuery) {
+      card.style.display = "";
+      return;
+    }
+
+    const text = card.innerText.toLowerCase();
+    if (!cleanQuery || text.includes(cleanQuery)) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
+function clearSearch() {
+  const input = document.getElementById("articleSearchInput");
+  if (input) {
+    input.value = "";
+    filterArticles("");
+    input.focus();
+  }
+}
+
+// 3. Bouton Partager natif (Web Share API)
+function shareWebsite() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Pixel Actu - Communauté & Nouveautés Google Pixel',
+      text: 'Découvrez les dernières actualités Pixel et Android 17 !',
+      url: window.location.href,
+    }).catch(() => {});
+  } else {
+    // Copie de secours dans le presse-papiers si non supporté
+    navigator.clipboard.writeText(window.location.href);
+    alert("Lien du site copié dans le presse-papiers !");
+  }
+}
+
+    
 </script>
 
 
