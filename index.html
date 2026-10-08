@@ -1236,6 +1236,101 @@ body {
 [data-theme="light"] .share-btn svg {
   fill: #1c1b1f !important;
 }
+/* ========================================================
+   COMPOSANT IMAGES & GALERIE (MATERIAL 3 EXPRESSIVE)
+   ======================================================== */
+
+.m3-figure {
+  margin: 18px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.m3-hero-figure {
+  margin-bottom: 24px;
+}
+
+/* Conteneur avec arrondis M3 et isolation du zoom */
+.m3-img-container {
+  overflow: hidden;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease;
+}
+
+[data-theme="light"] .m3-img-container {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Effet ressort M3 au toucher / survol */
+.m3-img-container:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+.m3-article-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Image principale avec hauteur maîtrisée */
+.m3-hero-figure .m3-article-img {
+  max-height: 380px;
+}
+
+/* Grille 2 colonnes adaptative pour les images 2 et 3 */
+.m3-image-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.m3-image-grid-2 .m3-figure {
+  margin: 0;
+}
+
+.m3-image-grid-2 .m3-article-img {
+  aspect-ratio: 16 / 10;
+}
+
+/* Légendes style Material 3 avec micro-badge */
+.m3-caption {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 0 6px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+[data-theme="light"] .m3-caption {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.caption-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(184, 77, 45, 0.2); /* Accent Canyon */
+  color: #e87a5a;
+  letter-spacing: 0.2px;
+}
+
+[data-theme="light"] .caption-badge {
+  background: rgba(184, 77, 45, 0.12);
+  color: #b84d2d;
+}
 
   </style>
 </head>
