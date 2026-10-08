@@ -852,6 +852,22 @@ body[data-theme="dark"] .home-article-link strong {
   }
 }
 
+/* Force la barre supérieure à être toujours au premier plan pour capter les clics */
+.top-nav-bar {
+  position: relative !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+/* S'assure que chaque élément interactif à l'intérieur est bien cliquable */
+.top-nav-bar input,
+.top-nav-bar button,
+.top-nav-bar a {
+  position: relative !important;
+  z-index: 10000 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
 
 
   </style>
