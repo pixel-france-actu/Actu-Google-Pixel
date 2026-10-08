@@ -2709,31 +2709,37 @@ window.shareWebsite = async function() {
   /* --- COMPTEUR ET BADGES MATERIAL 3 (DEVICES, BETA, TIPS) --- */
 function updateNavBadges() {
   const categories = {
-    'devices': { count: 0, color: '#a8c7fa', keywords: ['appareils', 'appareil', 'devices'] }, // Bleu Pixel
-    'beta':    { count: 0, color: '#e87a5a', keywords: ['mises à jour', 'mise à jour', 'beta', 'bêta'] }, // Terracotta Canyon
-    'tips':    { count: 0, color: '#6dd58c', keywords: ['astuces', 'astuce', 'tips'] } // Vert menthe
+    'devices': { count: 0, color: '#a8c7fa', keywords: ['appareils', 'appareil', 'devices'] },
+    'beta':    { count: 0, color: '#e87a5a', keywords: ['mises à jour', 'mise à jour', 'beta', 'bêta'] },
+    'tips':    { count: 0, color: '#6dd58c', keywords: ['astuces', 'astuce', 'tips'] }
   };
 
-  // 1. Comptage des articles selon l'attribut data-category
+  // Date du jour en français (ex: "8 octobre 2026")
+  const today = new Date();
+  const todayStr = today.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).toLowerCase();
+
+  // On compte UNIQUEMENT les articles publiés aujourd'hui
   document.querySelectorAll('article').forEach(article => {
     const cat = (article.getAttribute('data-category') || '').toLowerCase().trim();
-    if (categories[cat]) {
+    const dateEl = article.querySelector('.article-date, time, .date');
+    const articleText = (dateEl ? dateEl.textContent : article.textContent).toLowerCase();
+    
+    // Détecte la date du jour ou la présence du mot "aujourd'hui"
+    const isToday = article.getAttribute('data-today') === 'true' || 
+                    articleText.includes(todayStr) || 
+                    articleText.includes("aujourd'hui");
+
+    if (isToday && categories[cat]) {
       categories[cat].count++;
     }
   });
 
-  // 2. Recherche automatique du bouton correspondant dans la barre du bas
   const allNavButtons = document.querySelectorAll('.bottom-nav-bar button, .bottom-nav-btn, .bottom-nav-item, nav button');
 
   Object.keys(categories).forEach(catKey => {
     const config = categories[catKey];
-    if (config.count <= 0) return;
-
-    let targetBtn = null;
-
-    // Détection soit par attribut data-target/data-nav, soit par le texte affiché
-    targetBtn = document.querySelector(`[data-target="${catKey}"]`) || 
-                document.querySelector(`[data-nav="${catKey}"]`);
+    let targetBtn = document.querySelector(`[data-target="${catKey}"]`) || 
+                    document.querySelector(`[data-nav="${catKey}"]`);
 
     if (!targetBtn) {
       allNavButtons.forEach(btn => {
@@ -2744,10 +2750,15 @@ function updateNavBadges() {
       });
     }
 
-    // 3. Affichage du badge façon Pixel
     if (targetBtn) {
-      targetBtn.style.position = 'relative';
       let badge = targetBtn.querySelector('.m3-nav-badge');
+      
+      // S'il n'y a aucun article aujourd'hui, on masque le badge
+      if (config.count <= 0) {
+        if (badge) badge.remove();
+        return;
+      }
+
       if (!badge) {
         badge = document.createElement('span');
         badge.className = 'm3-nav-badge';
@@ -2758,6 +2769,7 @@ function updateNavBadges() {
     }
   });
 }
+
 
 // Lancement au chargement de la page
 window.addEventListener('DOMContentLoaded', updateNavBadges);
