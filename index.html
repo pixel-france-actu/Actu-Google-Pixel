@@ -2485,6 +2485,24 @@ function shareWebsite() {
     alert("Lien du site copié dans le presse-papiers !");
   }
 }
+window.shareWebsite = async function() {
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: 'Pixel Actu',
+        text: 'Découvrez l\'actualité de l\'écosystème Google Pixel et Android !',
+        url: window.location.href
+      });
+    } catch (err) {}
+  } else {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert('Lien copié dans le presse-papiers !');
+    } catch (e) {
+      prompt('Copiez ce lien :', window.location.href);
+    }
+  }
+};
 
     
 </script>
