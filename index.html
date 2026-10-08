@@ -1024,107 +1024,184 @@ body[data-theme="dark"] .icon-moon {
   transform: rotate(90deg) scale(0.3);
 }
 /* ========================================================
-   CONTRASTE & LISIBILITÉ DE LA BARRE DU HAUT EN MODE CLAIR
+   TOP BAR COLLAPSIBLE - MATERIAL 3 EXPRESSIVE
    ======================================================== */
 
-/* 1. En Mode Clair (data-theme="light" ou par défaut quand non-dark) */
-:root:not([data-theme="dark"]) .top-nav-bar,
-[data-theme="light"] .top-nav-bar {
-  background: rgba(255, 255, 255, 0.75) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+.top-nav-bar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 16px 28px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+  transition: padding 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.3s ease,
+              box-shadow 0.3s ease,
+              backdrop-filter 0.3s ease !important;
 }
 
-/* Texte du logo Pixel Actu */
-:root:not([data-theme="dark"]) .logo-text,
+/* Réduction fluide au défilement */
+.top-nav-bar.scrolled {
+  padding: 8px 24px !important;
+  background: rgba(26, 22, 20, 0.78) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+[data-theme="light"] .top-nav-bar.scrolled {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Décalage du contenu pour ne pas être masqué */
+body {
+  padding-top: 75px !important;
+}
+
+/* Pilule gauche (Logo) */
+.logo-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: rgba(45, 40, 38, 0.75) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  padding: 6px 14px 6px 6px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+[data-theme="light"] .logo-pill {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.top-nav-bar.scrolled .logo-pill {
+  transform: scale(0.92);
+}
+
+.logo-circle {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  background: #b84d2d !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+}
+
+.logo-text {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 0.92rem !important;
+  white-space: nowrap !important;
+}
+
 [data-theme="light"] .logo-text {
-  color: #1f1f1f !important;
+  color: #1c1b1f !important;
 }
 
-/* Cercle logo 'P' */
-:root:not([data-theme="dark"]) .logo-circle,
-[data-theme="light"] .logo-circle {
-  background-color: #b84d2d !important; /* Canyon */
+/* Pilule droite (Actions) */
+.header-actions {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: rgba(45, 40, 38, 0.75) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  padding: 4px 8px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+[data-theme="light"] .header-actions {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.top-nav-bar.scrolled .header-actions {
+  transform: scale(0.92);
+}
+
+.icon-btn {
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+[data-theme="light"] .icon-btn {
+  color: #1c1b1f !important;
+}
+
+.icon-btn:active {
+  transform: scale(0.82) !important;
+}
+
+.facebook-btn {
+  background: #1877f2 !important;
   color: #ffffff !important;
 }
 
-/* Badge de statut Android 17 */
-:root:not([data-theme="dark"]) .status-pill,
-[data-theme="light"] .status-pill {
-  background: #ffffff !important;
-  color: #1f1f1f !important;
-  border: 1px solid rgba(0, 0, 0, 0.12) !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+[data-theme="light"] .facebook-btn {
+  color: #ffffff !important;
 }
 
-:root:not([data-theme="dark"]) .status-dot,
-[data-theme="light"] .status-dot {
-  background-color: #10b981 !important;
-  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6) !important;
+/* Animation Soleil / Lune */
+.theme-toggle-btn {
+  position: relative !important;
+  overflow: hidden !important;
 }
 
-/* Champ de recherche Google Style en mode clair */
-:root:not([data-theme="dark"]) .search-box,
-[data-theme="light"] .search-box {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.14) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+.theme-icon {
+  position: absolute !important;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease !important;
 }
 
-:root:not([data-theme="dark"]) .search-box input,
-[data-theme="light"] .search-box input {
-  color: #1f1f1f !important;
+.icon-sun {
+  opacity: 1 !important;
+  transform: rotate(0deg) scale(1) !important;
 }
 
-:root:not([data-theme="dark"]) .search-box input::placeholder,
-[data-theme="light"] .search-box input::placeholder {
-  color: rgba(0, 0, 0, 0.55) !important;
+.icon-moon {
+  opacity: 0 !important;
+  transform: rotate(90deg) scale(0.3) !important;
 }
 
-:root:not([data-theme="dark"]) .search-icon,
-[data-theme="light"] .search-icon {
-  color: #5f6368 !important;
-  fill: #5f6368 !important;
+[data-theme="light"] .icon-sun {
+  opacity: 0 !important;
+  transform: rotate(-90deg) scale(0.3) !important;
 }
 
-/* Boutons d'actions à droite (Partage, Thème, Facebook) */
-:root:not([data-theme="dark"]) .icon-btn,
-[data-theme="light"] .icon-btn {
-  background: #ffffff !important;
-  color: #1f1f1f !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+[data-theme="light"] .icon-moon {
+  opacity: 1 !important;
+  transform: rotate(0deg) scale(1) !important;
 }
 
-:root:not([data-theme="dark"]) .icon-btn svg,
-[data-theme="light"] .icon-btn svg {
-  fill: #1f1f1f !important;
-}
-
-/* 2. En Mode Sombre : on garde l'aspect translucide et texte clair */
-[data-theme="dark"] .top-nav-bar {
-  background: rgba(22, 19, 18, 0.75) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-[data-theme="dark"] .logo-text,
-[data-theme="dark"] .status-pill,
-[data-theme="dark"] .search-box input,
-[data-theme="dark"] .icon-btn {
-  color: #f5f5f5 !important;
-}
-
-[data-theme="dark"] .search-icon,
-[data-theme="dark"] .icon-btn svg {
-  fill: #f5f5f5 !important;
-}
-
-[data-theme="dark"] .status-pill,
-[data-theme="dark"] .search-box,
-[data-theme="dark"] .icon-btn {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-}
 
 
   </style>
