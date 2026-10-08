@@ -868,6 +868,54 @@ body[data-theme="dark"] .home-article-link strong {
   pointer-events: auto !important;
   cursor: pointer !important;
 }
+/* Bouton conteneur avec effet ressort M3 */
+.theme-toggle-btn {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease !important;
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.84) !important;
+}
+
+/* Animations de transition des icônes */
+.theme-icon {
+  position: absolute;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease !important;
+  will-change: transform, opacity;
+}
+
+/* --- Mode Clair par défaut : Lune affichée, Soleil masqué --- */
+.icon-sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.3);
+}
+
+.icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* --- Mode Sombre : Soleil affiché, Lune masquée --- */
+[data-theme="dark"] .icon-sun,
+.dark-mode .icon-sun,
+html[data-theme="dark"] .icon-sun,
+body[data-theme="dark"] .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+[data-theme="dark"] .icon-moon,
+.dark-mode .icon-moon,
+html[data-theme="dark"] .icon-moon,
+body[data-theme="dark"] .icon-moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.3);
+}
 
 
   </style>
