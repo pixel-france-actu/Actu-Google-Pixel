@@ -916,6 +916,108 @@ body[data-theme="dark"] .icon-moon {
   opacity: 0;
   transform: rotate(90deg) scale(0.3);
 }
+/* ========================================================
+   CONTRASTE & LISIBILITÉ DE LA BARRE DU HAUT EN MODE CLAIR
+   ======================================================== */
+
+/* 1. En Mode Clair (data-theme="light" ou par défaut quand non-dark) */
+:root:not([data-theme="dark"]) .top-nav-bar,
+[data-theme="light"] .top-nav-bar {
+  background: rgba(255, 255, 255, 0.75) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Texte du logo Pixel Actu */
+:root:not([data-theme="dark"]) .logo-text,
+[data-theme="light"] .logo-text {
+  color: #1f1f1f !important;
+}
+
+/* Cercle logo 'P' */
+:root:not([data-theme="dark"]) .logo-circle,
+[data-theme="light"] .logo-circle {
+  background-color: #b84d2d !important; /* Canyon */
+  color: #ffffff !important;
+}
+
+/* Badge de statut Android 17 */
+:root:not([data-theme="dark"]) .status-pill,
+[data-theme="light"] .status-pill {
+  background: #ffffff !important;
+  color: #1f1f1f !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+
+:root:not([data-theme="dark"]) .status-dot,
+[data-theme="light"] .status-dot {
+  background-color: #10b981 !important;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6) !important;
+}
+
+/* Champ de recherche Google Style en mode clair */
+:root:not([data-theme="dark"]) .search-box,
+[data-theme="light"] .search-box {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.14) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+:root:not([data-theme="dark"]) .search-box input,
+[data-theme="light"] .search-box input {
+  color: #1f1f1f !important;
+}
+
+:root:not([data-theme="dark"]) .search-box input::placeholder,
+[data-theme="light"] .search-box input::placeholder {
+  color: rgba(0, 0, 0, 0.55) !important;
+}
+
+:root:not([data-theme="dark"]) .search-icon,
+[data-theme="light"] .search-icon {
+  color: #5f6368 !important;
+  fill: #5f6368 !important;
+}
+
+/* Boutons d'actions à droite (Partage, Thème, Facebook) */
+:root:not([data-theme="dark"]) .icon-btn,
+[data-theme="light"] .icon-btn {
+  background: #ffffff !important;
+  color: #1f1f1f !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+
+:root:not([data-theme="dark"]) .icon-btn svg,
+[data-theme="light"] .icon-btn svg {
+  fill: #1f1f1f !important;
+}
+
+/* 2. En Mode Sombre : on garde l'aspect translucide et texte clair */
+[data-theme="dark"] .top-nav-bar {
+  background: rgba(22, 19, 18, 0.75) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .logo-text,
+[data-theme="dark"] .status-pill,
+[data-theme="dark"] .search-box input,
+[data-theme="dark"] .icon-btn {
+  color: #f5f5f5 !important;
+}
+
+[data-theme="dark"] .search-icon,
+[data-theme="dark"] .icon-btn svg {
+  fill: #f5f5f5 !important;
+}
+
+[data-theme="dark"] .status-pill,
+[data-theme="dark"] .search-box,
+[data-theme="dark"] .icon-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
 
 
   </style>
