@@ -2891,7 +2891,92 @@ if (document.readyState === 'loading') {
 } else {
   updateAllBadges();
 }
-    
+ // --- Badges Canyon : décompte des articles publiés aujourd'hui ---
+function updateTodayBadges() {
+  const categories = ['devices', 'beta', 'tips'];
+
+  // Récupération de la date du jour (ex: "8 octobre 2026")
+  const today = new Date();
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  const todayStringFr = today.toLocaleDateString('fr-FR', options).toLowerCase(); // ex: "8 octobre 2026"
+  const todayISO = today.toISOString().split('T')[0]; // ex: "2026-10-08"
+
+  categories.forEach(cat => {
+    const tabBtn = document.querySelector(`.dock-tab[data-target="${cat}"]`);
+    if (!tabBtn) return;
+
+    // Nettoyage de tous les anciens badges résiduels
+    tabBtn.querySelectorAll('.auto-badge, .tab-badge, .badge, [class*="badge"]').forEach(b => b.remove());
+
+    // Sélecteur adapté (inclus 'updates' pour l'onglet beta)
+    let selector = `article.article-card[data-category="${cat}"]`;
+    if (cat === 'beta') {
+      selector = `article.article-card[data-category="beta"], article.article-card[data-category="updates"]`;
+    }
+
+    const articles = Array.from(document.querySelectorAll(selector))
+      .filter(art => !art.innerText.includes("Bienvenue sur l'espace"));
+
+    // Compte uniquement les articles datés d'aujourd'hui
+    const countToday = articles.filter(art => {
+      // 1. Vérification via un éventuel attribut data-date="2026-10-08"
+      const dataDate = art.getAttribute('data-date');
+      if (dataDate && dataDate === todayISO) return true;
+
+      // 2. Vérification dans l'élément de date affiché (.card-date ou balise time)
+      const dateEl = art.querySelector('.card-date, time');
+      if (dateEl) {
+        const text = dateEl.innerText.toLowerCase();
+        return text.includes(todayStringFr) || text.includes("aujourd'hui");
+      }
+
+      // 3. Repli : recherche textuelle dans l'en-tête de l'article
+      return art.innerText.toLowerCase().includes(todayStringFr);
+    }).length;
+
+    // Affichage de la pastille Canyon si au moins 1 article est sorti aujourd'hui
+    if (countToday > 0) {
+      const badge = document.createElement('span');
+      badge.className = 'auto-badge';
+      badge.textContent = countToday;
+      badge.style.cssText = `
+        position: absolute !important;
+        top: 2px !important;
+        right: calc(50% - 15px) !important;
+        background-color: #c86142 !important; /* Couleur Canyon unifiée */
+        color: #ffffff !important;
+        font-size: 9px !important;
+        font-weight: 700 !important;
+        width: 15px !important;
+        height: 15px !important;
+        min-width: 15px !important;
+        max-width: 15px !important;
+        box-sizing: border-box !important;
+        border: 1.5px solid #ffffff !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        line-height: 1 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35) !important;
+        pointer-events: none !important;
+        z-index: 20 !important;
+      `;
+      tabBtn.style.position = 'relative';
+      tabBtn.appendChild(badge);
+    }
+  });
+}
+
+// Exécution au chargement
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', updateTodayBadges);
+} else {
+  updateTodayBadges();
+}
+   
   
 </script>
 
