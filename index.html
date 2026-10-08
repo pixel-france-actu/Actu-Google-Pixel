@@ -2896,6 +2896,65 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
   updateNavBadges();
 }
 
+// --- Compteur automatique de badges pour chaque catégorie ---
+function updateAllBadges() {
+  // Liste des cibles d'onglets du dock
+  const tabs = ['devices', 'beta', 'tips'];
+
+  tabs.forEach(tabKey => {
+    // 1. Trouve le bouton correspondant dans la barre du bas
+    const tabBtn = document.querySelector(`.dock-tab[data-target="${tabKey}"]`);
+    if (!tabBtn) return;
+
+    // 2. Compte les articles de cette catégorie (en excluant les cartes de bienvenue)
+    // Prend en compte "beta" et son alias éventuel "updates"
+    let selector = `article.article-card[data-category="${tabKey}"]`;
+    if (tabKey === 'beta') {
+      selector = `article.article-card[data-category="beta"], article.article-card[data-category="updates"]`;
+    }
+
+    const count = Array.from(document.querySelectorAll(selector))
+      .filter(art => !art.innerText.includes("Bienvenue sur l'espace")).length;
+
+    // 3. Nettoie l'ancien badge s'il existe déjà
+    const oldBadge = tabBtn.querySelector('.auto-badge');
+    if (oldBadge) oldBadge.remove();
+
+    // 4. Si la catégorie possède des articles, affiche la pastille rouge
+    if (count > 0) {
+      const badge = document.createElement('span');
+      badge.className = 'auto-badge';
+      badge.textContent = count;
+      badge.style.cssText = `
+        position: absolute;
+        top: 3px;
+        right: calc(50% - 19px);
+        background-color: #d93025;
+        color: #ffffff;
+        font-size: 0.65rem;
+        font-weight: 700;
+        min-width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+      `;
+      tabBtn.style.position = 'relative';
+      tabBtn.appendChild(badge);
+    }
+  });
+}
+
+// Exécution au chargement du site
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', updateAllBadges);
+} else {
+  updateAllBadges();
+}
   
 </script>
 
