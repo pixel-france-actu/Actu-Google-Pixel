@@ -2773,15 +2773,28 @@ loadRSSFeed();
     const articles = Array.from(document.querySelectorAll("article.article-card:not([data-category='home'])"))
   .filter(art => !art.innerText.includes("Bienvenue sur l'espace"));
 
-    const latest = articles.slice(0, 4);
+        // Sélectionne les articles du jour ou le plus récent par catégorie
+    const categoriesWanted = ['beta', 'devices', 'tips'];
+    let latest = [];
+
+    const todayArticles = articles.filter(a => a.getAttribute('data-today') === 'true');
+    if (todayArticles.length > 0) {
+      latest = todayArticles.slice(0, 5);
+    } else {
+      categoriesWanted.forEach(cat => {
+        const found = articles.find(a => (a.getAttribute('data-category') || '').toLowerCase().trim() === cat);
+        if (found) latest.push(found);
+      });
+    }
 
     let html = '<ul style="list-style: none; padding-left: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">';
 
     latest.forEach((art, index) => {
       if (!art.id) art.id = "auto-article-" + index;
 
-      const titleEl = art.querySelector(".card-title, h2");
-      const tagEl = art.querySelector(".tag-badge");
+      const titleEl = art.querySelector(".card-title, .article-title, h2");
+      const tagEl = art.querySelector(".tag-badge, .category-badge");
+
       const category = art.getAttribute("data-category") || "devices";
 
       const titleText = titleEl ? titleEl.innerText : "Nouvel article";
