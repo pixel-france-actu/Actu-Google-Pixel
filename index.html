@@ -1202,6 +1202,21 @@ body {
   transform: rotate(0deg) scale(1) !important;
 }
 
+/* Couleur de la lune et des icônes en mode clair */
+[data-theme="light"] .theme-icon,
+[data-theme="light"] .icon-moon,
+[data-theme="light"] .theme-toggle-btn svg {
+  fill: #1c1b1f !important;
+  color: #1c1b1f !important;
+}
+
+/* En mode sombre, l'icône soleil reste bien blanche / dorée */
+[data-theme="dark"] .theme-icon,
+[data-theme="dark"] .icon-sun,
+[data-theme="dark"] .theme-toggle-btn svg {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
 
 
   </style>
