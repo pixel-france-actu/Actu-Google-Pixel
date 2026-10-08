@@ -630,6 +630,98 @@ body[data-theme="dark"] .home-article-link strong {
   text-decoration-color: #ffaa90 !important;
 }
 
+/* ========================================================
+   ANIMATIONS & DYNAMIQUES MATERIAL 3 EXPRESSIVE
+   ======================================================== */
+
+/* 1. Courbe élastique officielle Material Expressive (Spring) */
+:root {
+  --m3-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --m3-standard: cubic-bezier(0.2, 0.0, 0, 1);
+}
+
+/* 2. Cartes d'articles : élévation douce et réactivité au toucher */
+.article-card {
+  transition: transform 0.35s var(--m3-spring), box-shadow 0.35s ease, border-color 0.2s ease !important;
+  will-change: transform;
+}
+
+/* Au survol (iPad avec trackpad / PC) */
+.article-card:hover {
+  transform: translateY(-4px) scale(1.008) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Au toucher / clic (effet "Squish" M3) */
+.article-card:active {
+  transform: scale(0.985) !important;
+  transition-duration: 0.15s !important;
+}
+
+/* 3. Boutons de la barre de navigation du bas (Dock) */
+.dock-tab {
+  transition: transform 0.25s var(--m3-spring), background-color 0.2s ease !important;
+}
+
+.dock-tab:active {
+  transform: scale(0.88) !important; /* Compression élastique immédiate */
+}
+
+/* Petite vibration/rebond sur l'icône de l'onglet actif */
+.dock-tab.active svg,
+.dock-tab[aria-selected="true"] svg {
+  animation: m3Bounce 0.45s var(--m3-spring);
+}
+
+@keyframes m3Bounce {
+  0% { transform: scale(0.7); }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* 4. Liens et puces du fil d'accueil (Effet glissé dynamique) */
+.home-article-link {
+  transition: transform 0.25s var(--m3-spring), color 0.2s ease !important;
+  display: inline-block;
+}
+
+.home-article-link:hover {
+  transform: translateX(6px) !important;
+}
+
+.home-article-link:active {
+  transform: scale(0.96) translateX(3px) !important;
+}
+
+/* 5. Bouton de bascule thème Sombre / Clair (Lune / Soleil) */
+#themeToggle {
+  transition: transform 0.35s var(--m3-spring) !important;
+}
+
+#themeToggle:active {
+  transform: rotate(45deg) scale(0.85) !important;
+}
+
+/* 6. Apparition fluide des articles lors d'un changement d'onglet */
+@keyframes m3FadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.article-card {
+  animation: m3FadeSlideUp 0.4s var(--m3-standard) backwards;
+}
+
+/* Décalage subtil (staggering) pour les 3 premières cartes */
+.article-card:nth-of-type(1) { animation-delay: 0.05s; }
+.article-card:nth-of-type(2) { animation-delay: 0.12s; }
+.article-card:nth-of-type(3) { animation-delay: 0.18s; }
 
 
 
