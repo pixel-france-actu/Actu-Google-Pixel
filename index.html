@@ -2825,138 +2825,73 @@ window.shareWebsite = async function() {
   }
 };
 
-  /* --- COMPTEUR ET BADGES MATERIAL 3 (DEVICES, BETA, TIPS) --- */
-function updateNavBadges() {
-  const categories = {
-    'devices': { count: 0, color: '#a8c7fa', keywords: ['appareils', 'appareil', 'devices'] },
-    'beta':    { count: 0, color: '#e87a5a', keywords: ['mises à jour', 'mise à jour', 'beta', 'bêta'] },
-    'tips':    { count: 0, color: '#6dd58c', keywords: ['astuces', 'astuce', 'tips'] }
-  };
-
-  // Date du jour en français (ex: "8 octobre 2026")
-  const today = new Date();
-  const todayStr = today.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).toLowerCase();
-
-  // On compte UNIQUEMENT les articles publiés aujourd'hui
-  document.querySelectorAll('article').forEach(article => {
-    const cat = (article.getAttribute('data-category') || '').toLowerCase().trim();
-    const dateEl = article.querySelector('.article-date, time, .date');
-    const articleText = (dateEl ? dateEl.textContent : article.textContent).toLowerCase();
-    
-    // Détecte la date du jour ou la présence du mot "aujourd'hui"
-    const isToday = article.getAttribute('data-today') === 'true' || 
-                    articleText.includes(todayStr) || 
-                    articleText.includes("aujourd'hui");
-
-    if (isToday && categories[cat]) {
-      categories[cat].count++;
-    }
-  });
-
-  const allNavButtons = document.querySelectorAll('.bottom-nav-bar button, .bottom-nav-btn, .bottom-nav-item, nav button');
-
-  Object.keys(categories).forEach(catKey => {
-    const config = categories[catKey];
-    let targetBtn = document.querySelector(`[data-target="${catKey}"]`) || 
-                    document.querySelector(`[data-nav="${catKey}"]`);
-
-    if (!targetBtn) {
-      allNavButtons.forEach(btn => {
-        const text = btn.textContent.toLowerCase();
-        if (config.keywords.some(kw => text.includes(kw))) {
-          targetBtn = btn;
-        }
-      });
-    }
-
-    if (targetBtn) {
-      let badge = targetBtn.querySelector('.m3-nav-badge');
-      
-      // S'il n'y a aucun article aujourd'hui, on masque le badge
-      if (config.count <= 0) {
-        if (badge) badge.remove();
-        return;
-      }
-
-      if (!badge) {
-        badge = document.createElement('span');
-        badge.className = 'm3-nav-badge';
-        targetBtn.appendChild(badge);
-      }
-      badge.textContent = config.count;
-      badge.style.backgroundColor = config.color;
-    }
-  });
-}
-
-
-// Lancement au chargement de la page
-window.addEventListener('DOMContentLoaded', updateNavBadges);
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  updateNavBadges();
-}
-
-// --- Compteur automatique de badges pour chaque catégorie ---
+  // --- Compteur automatique avec couleurs dédiées par onglet ---
 function updateAllBadges() {
-  // Liste des cibles d'onglets du dock
-  const tabs = ['devices', 'beta', 'tips'];
+  const config = [
+    { target: 'devices', bg: '#1a73e8', color: '#ffffff' }, // Bleu pour Appareils
+    { target: 'beta',    bg: '#c86142', color: '#ffffff' }, // Canyon pour Mises à jour
+    { target: 'tips',    bg: '#e37400', color: '#ffffff' }  // Ambre pour Astuces
+  ];
 
-  tabs.forEach(tabKey => {
-    // 1. Trouve le bouton correspondant dans la barre du bas
-    const tabBtn = document.querySelector(`.dock-tab[data-target="${tabKey}"]`);
+  config.forEach(item => {
+    const tabBtn = document.querySelector(`.dock-tab[data-target="${item.target}"]`);
     if (!tabBtn) return;
 
-    // 2. Compte les articles de cette catégorie (en excluant les cartes de bienvenue)
-    // Prend en compte "beta" et son alias éventuel "updates"
-    let selector = `article.article-card[data-category="${tabKey}"]`;
-    if (tabKey === 'beta') {
+    // Sélectionne les articles correspondants
+    let selector = `article.article-card[data-category="${item.target}"]`;
+    if (item.target === 'beta') {
       selector = `article.article-card[data-category="beta"], article.article-card[data-category="updates"]`;
     }
 
     const count = Array.from(document.querySelectorAll(selector))
       .filter(art => !art.innerText.includes("Bienvenue sur l'espace")).length;
 
-    // 3. Nettoie l'ancien badge s'il existe déjà
-    const oldBadge = tabBtn.querySelector('.auto-badge');
-    if (oldBadge) oldBadge.remove();
+    // Supprime tous les anciens badges parasites
+    tabBtn.querySelectorAll('.auto-badge, .tab-badge, .badge, [class*="badge"]').forEach(b => b.remove());
 
-    // 4. Si la catégorie possède des articles, affiche la pastille rouge
+    // Génère le nouveau badge parfaitement calibré (14px)
     if (count > 0) {
       const badge = document.createElement('span');
       badge.className = 'auto-badge';
       badge.textContent = count;
-            badge.style.cssText = `
-        position: absolute;
-        top: 4px;
-        right: calc(50% - 15px);
-        background-color: #d93025;
-        color: #ffffff;
-        font-size: 0.55rem;
-        font-weight: 700;
-        min-width: 13px;
-        height: 13px;
-        padding: 0 2px;
-        border-radius: 999px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-        pointer-events: none;
+      badge.style.cssText = `
+        position: absolute !important;
+        top: 3px !important;
+        right: calc(50% - 15px) !important;
+        background-color: ${item.bg} !important;
+        color: ${item.color} !important;
+        font-size: 9px !important;
+        font-weight: 700 !important;
+        width: 14px !important;
+        height: 14px !important;
+        min-width: 14px !important;
+        max-width: 14px !important;
+        box-sizing: border-box !important;
+        border: none !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        line-height: 1 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+        pointer-events: none !important;
+        z-index: 10 !important;
       `;
-
       tabBtn.style.position = 'relative';
       tabBtn.appendChild(badge);
     }
   });
 }
 
-// Exécution au chargement du site
+// Lancement automatique au chargement
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', updateAllBadges);
 } else {
   updateAllBadges();
 }
+    
   
 </script>
 
