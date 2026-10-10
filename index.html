@@ -2873,59 +2873,7 @@ articles.forEach(art => {
 // Lancement du flux RSS
 loadRSSFeed();
 
-      // --- Génération automatique des articles récents sur l'accueil ---
-  const container = document.getElementById("latestArticlesContainer");
-  if (container) {
-    const articles = Array.from(document.querySelectorAll("article.article-card:not([data-category='home'])"))
-  .filter(art => !art.innerText.includes("Bienvenue sur l'espace"));
-
-            // Affiche les articles du jour s'il y en a, complétés par les plus récents de chaque catégorie
-    const categoriesWanted = ['beta', 'devices', 'tips'];
-    let latest = [];
-
-    // 1. On prend tous les articles marqués comme publiés aujourd'hui
-    const todayArticles = articles.filter(a => a.getAttribute('data-today') === 'true');
-    latest.push(...todayArticles);
-
-    // 2. Pour les catégories qui n'ont pas d'article "today", on ajoute leur article le plus récent
-    categoriesWanted.forEach(cat => {
-      const alreadyHasCat = latest.some(a => (a.getAttribute('data-category') || '').toLowerCase().trim() === cat);
-      if (!alreadyHasCat) {
-        const found = articles.find(a => (a.getAttribute('data-category') || '').toLowerCase().trim() === cat);
-        if (found) latest.push(found);
-      }
-    });
-
-    // On limite à 4 ou 5 articles au total dans la liste
-    latest = latest.slice(0, 5);
-
-
-    let html = '<ul style="list-style: none; padding-left: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">';
-
-    latest.forEach((art, index) => {
-      if (!art.id) art.id = "auto-article-" + index;
-
-      const titleEl = art.querySelector(".card-title, .article-title, h2");
-      const tagEl = art.querySelector(".tag-badge, .category-badge");
-
-      const category = art.getAttribute("data-category") || "devices";
-
-      const titleText = titleEl ? titleEl.innerText : "Nouvel article";
-      const tagText = tagEl ? tagEl.innerText : "";
-
-      html += `
-        <li>
-          <a href="#${art.id}" onclick="goToArticle('${category}', '${art.id}'); return false;" class="home-article-link">
-            ${tagText ? `<span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; opacity: 0.7; display: block; margin-bottom: 2px;">${tagText}</span>` : ''}
-            <strong>${titleText}</strong>
-          </a>
-        </li>
-      `;
-    });
-
-    html += '</ul>';
-    container.innerHTML = html;
-  }
+      
 
   window.goToArticle = function(category, articleId) {
     // Sélectionne et clique sur le bon onglet du dock (ex: data-target="devices")
